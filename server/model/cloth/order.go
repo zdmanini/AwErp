@@ -4,8 +4,11 @@ import (
 	"fmt"
 	uuid "github.com/satori/go.uuid"
 	"gorm.io/gorm"
+	"io/ioutil"
 	"likeadmin/model"
 	"likeadmin/model/basic"
+	"os"
+	"path/filepath"
 	"strings"
 )
 
@@ -81,6 +84,42 @@ func checkOrderInfo(u *ClothOrder, tx *gorm.DB) error {
 				return err
 			}
 		}
+	}
+
+	return nil
+}
+
+// buildDB
+func (u *ClothOrder) buildDB(db *gorm.DB) error {
+	dir, _ := os.Getwd()
+	source := fmt.Sprintf("%s/%s", dir, "dongming/source/source.db")
+	dist := fmt.Sprintf("%s/%s/%s", dir, "static/order/", u.ID.String()+".db")
+	err := copyAndRenameFile(source, dist)
+	if err != nil {
+		return fmt.Errorf("复制文件失败：%s", err.Error())
+	}
+	return nil
+}
+
+// 复制文件并改名函数
+func copyAndRenameFile(srcPath string, dstPath string) error {
+	// 读取源文件内容
+	srcData, err := ioutil.ReadFile(srcPath)
+	if err != nil {
+		return err
+	}
+
+	// 获取源文件所在目录
+	srcDir := filepath.Dir(srcPath)
+
+	// 构建新的目标文件路径
+	dstName := filepath.Base(dstPath)
+	dstPath = filepath.Join(srcDir, dstName)
+
+	// 写入新文件
+	err = ioutil.WriteFile(dstPath, srcData, 0644)
+	if err != nil {
+		return err
 	}
 
 	return nil

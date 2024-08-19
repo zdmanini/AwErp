@@ -87,7 +87,7 @@ func loadConfig(envPath string) envConfig {
 		// 静态资源本地路径
 		StaticDirectory: "static",
 		// Redis键前缀
-		RedisPrefix: "Like:",
+		RedisPrefix: "Zdm:",
 		// 上传图片限制
 		UploadImageSize: 1024 * 1024 * 20,
 		// 上传视频限制
