@@ -1,7 +1,7 @@
 package {{{ .PackageName }}}
 
 import (
-	"likeadmin/core"
+	"Awesome/core"
 )
 
 //{{{ title (toCamelCase .EntityName) }}}ListReq {{{ .FunctionName }}}列表参数

@@ -1,6 +1,6 @@
 package req
 
-import "likeadmin/core/request"
+import "Awesome/core/request"
 
 type ClothStyleQueryReq struct {
 	Name   string `form:"name"`

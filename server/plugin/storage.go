@@ -1,12 +1,12 @@
 package plugin
 
 import (
+	"Awesome/config"
+	"Awesome/core"
+	"Awesome/core/response"
+	"Awesome/util"
 	"fmt"
 	"io"
-	"likeadmin/config"
-	"likeadmin/core"
-	"likeadmin/core/response"
-	"likeadmin/util"
 	"mime/multipart"
 	"os"
 	"path"

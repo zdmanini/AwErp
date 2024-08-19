@@ -1,11 +1,11 @@
 package service
 
 import (
-	"likeadmin/admin/service/basic"
-	"likeadmin/admin/service/cloth"
-	"likeadmin/admin/service/common"
-	"likeadmin/admin/service/setting"
-	"likeadmin/admin/service/system"
+	"Awesome/admin/service/basic"
+	"Awesome/admin/service/cloth"
+	"Awesome/admin/service/common"
+	"Awesome/admin/service/setting"
+	"Awesome/admin/service/system"
 )
 
 var InitFunctions = []interface{}{

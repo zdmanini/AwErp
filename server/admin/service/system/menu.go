@@ -1,15 +1,15 @@
 package system
 
 import (
+	"Awesome/admin/schemas/req"
+	"Awesome/admin/schemas/resp"
+	"Awesome/config"
+	"Awesome/core/response"
+	"Awesome/model/system"
+	"Awesome/util"
 	"github.com/fatih/structs"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
-	"likeadmin/admin/schemas/req"
-	"likeadmin/admin/schemas/resp"
-	"likeadmin/config"
-	"likeadmin/core/response"
-	"likeadmin/model/system"
-	"likeadmin/util"
 )
 
 type ISystemAuthMenuService interface {

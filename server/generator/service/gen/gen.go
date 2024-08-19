@@ -1,17 +1,17 @@
 package gen
 
 import (
+	"Awesome/config"
+	"Awesome/core/request"
+	"Awesome/core/response"
+	"Awesome/generator"
+	"Awesome/generator/schemas/req"
+	"Awesome/generator/schemas/resp"
+	"Awesome/model/gen"
+	"Awesome/util"
 	"archive/zip"
 	"bytes"
 	"gorm.io/gorm"
-	"likeadmin/config"
-	"likeadmin/core/request"
-	"likeadmin/core/response"
-	"likeadmin/generator"
-	"likeadmin/generator/schemas/req"
-	"likeadmin/generator/schemas/resp"
-	"likeadmin/model/gen"
-	"likeadmin/util"
 	"strings"
 )
 

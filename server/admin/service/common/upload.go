@@ -1,10 +1,10 @@
 package common
 
 import (
-	"likeadmin/admin/schemas/req"
-	"likeadmin/admin/schemas/resp"
-	"likeadmin/core/response"
-	"likeadmin/plugin"
+	"Awesome/admin/schemas/req"
+	"Awesome/admin/schemas/resp"
+	"Awesome/core/response"
+	"Awesome/plugin"
 	"mime/multipart"
 )
 

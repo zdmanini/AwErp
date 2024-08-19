@@ -1,14 +1,14 @@
 package basic
 
 import (
+	"Awesome/admin/schemas/req"
+	"Awesome/admin/service/basic"
+	"Awesome/core"
+	"Awesome/core/request"
+	"Awesome/core/response"
+	"Awesome/middleware"
+	"Awesome/util"
 	"github.com/gin-gonic/gin"
-	"likeadmin/admin/schemas/req"
-	"likeadmin/admin/service/basic"
-	"likeadmin/core"
-	"likeadmin/core/request"
-	"likeadmin/core/response"
-	"likeadmin/middleware"
-	"likeadmin/util"
 )
 
 var InfoGroup = core.Group("/basic", newInfoHandler, regInfo, middleware.TokenAuth())

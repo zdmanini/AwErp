@@ -1,14 +1,14 @@
 package common
 
 import (
+	"Awesome/admin/schemas/req"
+	"Awesome/admin/service/common"
+	"Awesome/config"
+	"Awesome/core"
+	"Awesome/core/response"
+	"Awesome/middleware"
+	"Awesome/util"
 	"github.com/gin-gonic/gin"
-	"likeadmin/admin/schemas/req"
-	"likeadmin/admin/service/common"
-	"likeadmin/config"
-	"likeadmin/core"
-	"likeadmin/core/response"
-	"likeadmin/middleware"
-	"likeadmin/util"
 )
 
 var UploadGroup = core.Group("/common", newUploadHandler, regUpload, middleware.TokenAuth())

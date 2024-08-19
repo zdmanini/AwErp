@@ -1,13 +1,13 @@
 package basic
 
 import (
+	"Awesome/admin/schemas/req"
+	"Awesome/admin/schemas/resp"
+	"Awesome/core/request"
+	"Awesome/core/response"
+	"Awesome/model/basic"
 	"fmt"
 	"gorm.io/gorm"
-	"likeadmin/admin/schemas/req"
-	"likeadmin/admin/schemas/resp"
-	"likeadmin/core/request"
-	"likeadmin/core/response"
-	"likeadmin/model/basic"
 )
 
 type BasicCustomerService interface {

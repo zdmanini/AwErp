@@ -1,11 +1,11 @@
 package common
 
 import (
+	"Awesome/admin/service/common"
+	"Awesome/core"
+	"Awesome/core/response"
+	"Awesome/middleware"
 	"github.com/gin-gonic/gin"
-	"likeadmin/admin/service/common"
-	"likeadmin/core"
-	"likeadmin/core/response"
-	"likeadmin/middleware"
 )
 
 var IndexGroup = core.Group("/common", newIndexHandler, regIndex, middleware.TokenAuth())

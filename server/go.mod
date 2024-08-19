@@ -1,4 +1,4 @@
-module likeadmin
+module Awesome
 
 go 1.21
 

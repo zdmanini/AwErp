@@ -1,7 +1,7 @@
 package resp
 
 import (
-	"likeadmin/core"
+	"Awesome/core"
 )
 
 // DbTableResp 数据表返回信息

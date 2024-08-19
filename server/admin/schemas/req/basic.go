@@ -1,7 +1,7 @@
 package req
 
 import (
-	"likeadmin/core/request"
+	"Awesome/core/request"
 )
 
 type BasicCustomerQueryReq struct {

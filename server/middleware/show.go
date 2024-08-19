@@ -1,10 +1,10 @@
 package middleware
 
 import (
+	"Awesome/config"
+	"Awesome/core/response"
+	"Awesome/util"
 	"github.com/gin-gonic/gin"
-	"likeadmin/config"
-	"likeadmin/core/response"
-	"likeadmin/util"
 	"strings"
 )
 

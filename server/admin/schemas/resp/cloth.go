@@ -1,6 +1,6 @@
 package resp
 
-import "likeadmin/core"
+import "Awesome/core"
 
 type ClothStyleResp struct {
 	ID          string        `json:"id" structs:"id"`

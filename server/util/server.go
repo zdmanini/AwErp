@@ -1,13 +1,13 @@
 package util
 
 import (
+	"Awesome/core"
 	"fmt"
 	"github.com/shirou/gopsutil/cpu"
 	"github.com/shirou/gopsutil/disk"
 	"github.com/shirou/gopsutil/host"
 	"github.com/shirou/gopsutil/mem"
 	"github.com/shirou/gopsutil/process"
-	"likeadmin/core"
 	"math"
 	"os"
 	"runtime"

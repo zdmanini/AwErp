@@ -1,8 +1,8 @@
 package util
 
 import (
-	"likeadmin/config"
-	"likeadmin/core"
+	"Awesome/config"
+	"Awesome/core"
 	"net/url"
 	"path"
 	"strings"

@@ -1,9 +1,9 @@
 package util
 
 import (
+	"Awesome/core"
 	"github.com/fatih/structs"
 	"github.com/jinzhu/copier"
-	"likeadmin/core"
 )
 
 var ConvertUtil = convertUtil{}

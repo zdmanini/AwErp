@@ -1,14 +1,14 @@
 package system
 
 import (
+	"Awesome/admin/schemas/req"
+	"Awesome/admin/service/system"
+	"Awesome/config"
+	"Awesome/core"
+	"Awesome/core/response"
+	"Awesome/middleware"
+	"Awesome/util"
 	"github.com/gin-gonic/gin"
-	"likeadmin/admin/schemas/req"
-	"likeadmin/admin/service/system"
-	"likeadmin/config"
-	"likeadmin/core"
-	"likeadmin/core/response"
-	"likeadmin/middleware"
-	"likeadmin/util"
 )
 
 var MenuGroup = core.Group("/system", newMenuHandler, regMenu, middleware.TokenAuth())

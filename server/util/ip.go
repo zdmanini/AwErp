@@ -1,7 +1,7 @@
 package util
 
 import (
-	"likeadmin/core"
+	"Awesome/core"
 	"net"
 )
 

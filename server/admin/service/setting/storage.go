@@ -1,11 +1,11 @@
 package setting
 
 import (
+	"Awesome/admin/schemas/req"
+	"Awesome/core/response"
+	"Awesome/util"
 	"fmt"
 	"gorm.io/gorm"
-	"likeadmin/admin/schemas/req"
-	"likeadmin/core/response"
-	"likeadmin/util"
 )
 
 type ISettingStorageService interface {

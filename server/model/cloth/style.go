@@ -1,11 +1,11 @@
 package cloth
 
 import (
+	"Awesome/model"
+	"Awesome/model/basic"
 	"github.com/gookit/color"
 	uuid "github.com/satori/go.uuid"
 	"gorm.io/gorm"
-	"likeadmin/model"
-	"likeadmin/model/basic"
 	"strings"
 )
 

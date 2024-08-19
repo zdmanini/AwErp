@@ -1,15 +1,15 @@
 package system
 
 import (
+	"Awesome/admin/schemas/req"
+	"Awesome/admin/service/system"
+	"Awesome/config"
+	"Awesome/core"
+	"Awesome/core/request"
+	"Awesome/core/response"
+	"Awesome/middleware"
+	"Awesome/util"
 	"github.com/gin-gonic/gin"
-	"likeadmin/admin/schemas/req"
-	"likeadmin/admin/service/system"
-	"likeadmin/config"
-	"likeadmin/core"
-	"likeadmin/core/request"
-	"likeadmin/core/response"
-	"likeadmin/middleware"
-	"likeadmin/util"
 )
 
 var AdminGroup = core.Group("/system", newAdminHandler, regAdmin, middleware.TokenAuth())

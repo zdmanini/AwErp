@@ -1,11 +1,11 @@
 package common
 
 import (
+	"Awesome/config"
+	"Awesome/core"
+	"Awesome/core/response"
+	"Awesome/util"
 	"gorm.io/gorm"
-	"likeadmin/config"
-	"likeadmin/core"
-	"likeadmin/core/response"
-	"likeadmin/util"
 	"time"
 )
 
@@ -27,7 +27,7 @@ type indexService struct {
 // Console 控制台数据
 func (iSrv indexService) Console() (res map[string]interface{}, e error) {
 	// 版本信息
-	name, err := util.ConfigUtil.GetVal(iSrv.db, "website", "name", "LikeAdmin-Go")
+	name, err := util.ConfigUtil.GetVal(iSrv.db, "website", "name", "Awesome-Go")
 	if e = response.CheckErr(err, "Console Get err"); e != nil {
 		return
 	}

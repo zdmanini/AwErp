@@ -1,12 +1,12 @@
 package cloth
 
 import (
+	"Awesome/model"
+	"Awesome/model/basic"
 	"fmt"
 	uuid "github.com/satori/go.uuid"
 	"gorm.io/gorm"
 	"io/ioutil"
-	"likeadmin/model"
-	"likeadmin/model/basic"
 	"os"
 	"path/filepath"
 	"strings"

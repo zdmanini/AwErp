@@ -1,14 +1,14 @@
 package core
 
 import (
+	"Awesome/config"
+	"Awesome/model/basic"
+	"Awesome/model/cloth"
+	"Awesome/model/common"
+	"Awesome/model/gen"
+	"Awesome/model/setting"
+	"Awesome/model/system"
 	"gorm.io/gorm"
-	"likeadmin/config"
-	"likeadmin/model/basic"
-	"likeadmin/model/cloth"
-	"likeadmin/model/common"
-	"likeadmin/model/gen"
-	"likeadmin/model/setting"
-	"likeadmin/model/system"
 )
 
 func Migrage(db *gorm.DB) error {

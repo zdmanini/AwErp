@@ -1,10 +1,10 @@
 package middleware
 
 import (
+	"Awesome/core"
+	"Awesome/core/response"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
-	"likeadmin/core"
-	"likeadmin/core/response"
 	"runtime/debug"
 )
 

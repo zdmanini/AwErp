@@ -1,12 +1,12 @@
 package system
 
 import (
+	"Awesome/admin/schemas/req"
+	"Awesome/admin/schemas/resp"
+	"Awesome/core/response"
+	"Awesome/model/system"
+	"Awesome/util"
 	"gorm.io/gorm"
-	"likeadmin/admin/schemas/req"
-	"likeadmin/admin/schemas/resp"
-	"likeadmin/core/response"
-	"likeadmin/model/system"
-	"likeadmin/util"
 )
 
 type ISystemAuthDeptService interface {

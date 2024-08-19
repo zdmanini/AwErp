@@ -1,13 +1,13 @@
 package util
 
 import (
+	"Awesome/config"
+	"Awesome/core"
 	"crypto/md5"
 	"encoding/hex"
 	"encoding/json"
 	"github.com/google/uuid"
 	"github.com/jinzhu/copier"
-	"likeadmin/config"
-	"likeadmin/core"
 	"math"
 	"math/rand"
 	"os"

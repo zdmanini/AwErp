@@ -1,14 +1,14 @@
 package cloth
 
 import (
+	"Awesome/admin/schemas/req"
+	"Awesome/admin/service/cloth"
+	"Awesome/core"
+	"Awesome/core/request"
+	"Awesome/core/response"
+	"Awesome/middleware"
+	"Awesome/util"
 	"github.com/gin-gonic/gin"
-	"likeadmin/admin/schemas/req"
-	"likeadmin/admin/service/cloth"
-	"likeadmin/core"
-	"likeadmin/core/request"
-	"likeadmin/core/response"
-	"likeadmin/middleware"
-	"likeadmin/util"
 )
 
 var OrderGroup = core.Group("/cloth", newOrderHandler, regOrder, middleware.TokenAuth())

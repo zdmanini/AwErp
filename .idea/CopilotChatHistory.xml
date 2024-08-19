@@ -4,6 +4,12 @@
     <option name="conversations">
       <list>
         <Conversation>
+          <option name="createTime" value="1724069323645" />
+          <option name="id" value="942013f5a19e482fa6aee340325c4333" />
+          <option name="title" value="新对话 2024年8月19日 20:08:43" />
+          <option name="updateTime" value="1724069323645" />
+        </Conversation>
+        <Conversation>
           <option name="createTime" value="1724041128097" />
           <option name="id" value="6976feb5dce64342b3aa8d2024ae2200" />
           <option name="title" value="go 复制文件并改名" />
@@ -195,6 +201,30 @@
             </list>
           </option>
           <option name="updateTime" value="1724029026964" />
+        </Conversation>
+        <Conversation>
+          <option name="createTime" value="1724067470507" />
+          <option name="id" value="5cd8f2b4a93b4496b225d6ea915ec8f9" />
+          <option name="title" value="新对话 2024年8月19日 19:37:50" />
+          <option name="updateTime" value="1724067470507" />
+        </Conversation>
+        <Conversation>
+          <option name="createTime" value="1724067333534" />
+          <option name="id" value="528e0befd31d4e8e9970c813f6f78333" />
+          <option name="title" value="新对话 2024年8月19日 19:35:33" />
+          <option name="updateTime" value="1724067333534" />
+        </Conversation>
+        <Conversation>
+          <option name="createTime" value="1724067204680" />
+          <option name="id" value="3f26c9cc38a1476ca90986ea6f586c04" />
+          <option name="title" value="新对话 2024年8月19日 19:33:24" />
+          <option name="updateTime" value="1724067204680" />
+        </Conversation>
+        <Conversation>
+          <option name="createTime" value="1723989120641" />
+          <option name="id" value="a53b37a409ac4d57b9dce99565cd177f" />
+          <option name="title" value="新对话 2024年8月18日 21:52:00" />
+          <option name="updateTime" value="1723989120641" />
         </Conversation>
         <Conversation>
           <option name="createTime" value="1723986357859" />

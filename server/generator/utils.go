@@ -1,10 +1,10 @@
 package generator
 
 import (
+	"Awesome/config"
+	"Awesome/model/gen"
+	"Awesome/util"
 	"gorm.io/gorm"
-	"likeadmin/config"
-	"likeadmin/model/gen"
-	"likeadmin/util"
 	"strconv"
 	"strings"
 	"time"

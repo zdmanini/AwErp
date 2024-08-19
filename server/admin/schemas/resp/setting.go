@@ -1,6 +1,6 @@
 package resp
 
-import "likeadmin/core"
+import "Awesome/core"
 
 // SettingDictTypeResp 字典类型返回信息
 type SettingDictTypeResp struct {

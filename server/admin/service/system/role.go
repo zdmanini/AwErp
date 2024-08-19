@@ -1,15 +1,15 @@
 package system
 
 import (
+	"Awesome/admin/schemas/req"
+	"Awesome/admin/schemas/resp"
+	"Awesome/config"
+	"Awesome/core/request"
+	"Awesome/core/response"
+	"Awesome/model/system"
+	"Awesome/util"
 	"github.com/fatih/structs"
 	"gorm.io/gorm"
-	"likeadmin/admin/schemas/req"
-	"likeadmin/admin/schemas/resp"
-	"likeadmin/config"
-	"likeadmin/core/request"
-	"likeadmin/core/response"
-	"likeadmin/model/system"
-	"likeadmin/util"
 	"strconv"
 	"strings"
 )

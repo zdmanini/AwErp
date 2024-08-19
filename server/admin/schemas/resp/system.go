@@ -1,6 +1,6 @@
 package resp
 
-import "likeadmin/core"
+import "Awesome/core"
 
 // SystemLoginResp 系统登录返回信息
 type SystemLoginResp struct {

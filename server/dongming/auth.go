@@ -1,9 +1,9 @@
 package dongming
 
 import (
-	srv "likeadmin/admin/service/system"
-	"likeadmin/core"
-	"likeadmin/model/system"
+	srv "Awesome/admin/service/system"
+	"Awesome/core"
+	"Awesome/model/system"
 )
 
 func auth() error {

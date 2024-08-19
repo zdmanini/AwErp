@@ -1,9 +1,9 @@
 package util
 
 import (
+	"Awesome/model/system"
 	"errors"
 	"gorm.io/gorm"
-	"likeadmin/model/system"
 )
 
 var ConfigUtil = configUtil{}

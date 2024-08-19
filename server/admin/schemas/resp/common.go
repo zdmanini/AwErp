@@ -1,6 +1,6 @@
 package resp
 
-import "likeadmin/core"
+import "Awesome/core"
 
 // CommonUploadFileResp 上传图片返回信息
 type CommonUploadFileResp struct {

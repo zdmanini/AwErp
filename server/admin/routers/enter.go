@@ -1,13 +1,13 @@
 package routers
 
 import (
-	"likeadmin/admin/routers/basic"
-	"likeadmin/admin/routers/cloth"
-	"likeadmin/admin/routers/common"
-	"likeadmin/admin/routers/monitor"
-	"likeadmin/admin/routers/setting"
-	"likeadmin/admin/routers/system"
-	"likeadmin/core"
+	"Awesome/admin/routers/basic"
+	"Awesome/admin/routers/cloth"
+	"Awesome/admin/routers/common"
+	"Awesome/admin/routers/monitor"
+	"Awesome/admin/routers/setting"
+	"Awesome/admin/routers/system"
+	"Awesome/core"
 )
 
 var InitRouters = []*core.GroupBase{

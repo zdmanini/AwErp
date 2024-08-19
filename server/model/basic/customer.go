@@ -1,9 +1,9 @@
 package basic
 
 import (
+	"Awesome/model"
 	uuid "github.com/satori/go.uuid"
 	"gorm.io/gorm"
-	"likeadmin/model"
 	"strings"
 )
 

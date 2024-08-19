@@ -1,11 +1,11 @@
 package monitor
 
 import (
+	"Awesome/core"
+	"Awesome/core/response"
+	"Awesome/middleware"
+	"Awesome/util"
 	"github.com/gin-gonic/gin"
-	"likeadmin/core"
-	"likeadmin/core/response"
-	"likeadmin/middleware"
-	"likeadmin/util"
 	"strings"
 )
 

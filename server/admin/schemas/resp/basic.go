@@ -1,8 +1,8 @@
 package resp
 
 import (
+	"Awesome/core"
 	uuid "github.com/satori/go.uuid"
-	"likeadmin/core"
 )
 
 type BasicCustomerResp struct {

@@ -1,15 +1,15 @@
 package generator
 
 import (
+	"Awesome/config"
+	"Awesome/core/response"
+	"Awesome/model/gen"
+	"Awesome/util"
 	"archive/zip"
 	"bytes"
 	"fmt"
 	"io"
 	"io/ioutil"
-	"likeadmin/config"
-	"likeadmin/core/response"
-	"likeadmin/model/gen"
-	"likeadmin/util"
 	"os"
 	"path"
 	"strings"

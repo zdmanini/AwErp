@@ -1,14 +1,14 @@
 package gen
 
 import (
+	"Awesome/core"
+	"Awesome/core/request"
+	"Awesome/core/response"
+	"Awesome/generator/schemas/req"
+	"Awesome/generator/service/gen"
+	"Awesome/middleware"
+	"Awesome/util"
 	"github.com/gin-gonic/gin"
-	"likeadmin/core"
-	"likeadmin/core/request"
-	"likeadmin/core/response"
-	"likeadmin/generator/schemas/req"
-	"likeadmin/generator/service/gen"
-	"likeadmin/middleware"
-	"likeadmin/util"
 	"net/http"
 	"strings"
 )

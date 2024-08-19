@@ -1,13 +1,13 @@
 package middleware
 
 import (
+	"Awesome/admin/service/system"
+	"Awesome/config"
+	"Awesome/core"
+	"Awesome/core/response"
+	sysModel "Awesome/model/system"
+	"Awesome/util"
 	"github.com/gin-gonic/gin"
-	"likeadmin/admin/service/system"
-	"likeadmin/config"
-	"likeadmin/core"
-	"likeadmin/core/response"
-	sysModel "likeadmin/model/system"
-	"likeadmin/util"
 	"strconv"
 	"strings"
 )

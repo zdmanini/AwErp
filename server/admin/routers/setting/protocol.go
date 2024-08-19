@@ -1,13 +1,13 @@
 package setting
 
 import (
+	"Awesome/admin/schemas/req"
+	"Awesome/admin/service/setting"
+	"Awesome/core"
+	"Awesome/core/response"
+	"Awesome/middleware"
+	"Awesome/util"
 	"github.com/gin-gonic/gin"
-	"likeadmin/admin/schemas/req"
-	"likeadmin/admin/service/setting"
-	"likeadmin/core"
-	"likeadmin/core/response"
-	"likeadmin/middleware"
-	"likeadmin/util"
 )
 
 var ProtocolGroup = core.Group("/setting", newProtocolHandler, regProtocol, middleware.TokenAuth())

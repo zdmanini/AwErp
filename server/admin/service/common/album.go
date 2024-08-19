@@ -1,14 +1,14 @@
 package common
 
 import (
+	"Awesome/admin/schemas/req"
+	"Awesome/admin/schemas/resp"
+	"Awesome/config"
+	"Awesome/core/request"
+	"Awesome/core/response"
+	"Awesome/model/common"
+	"Awesome/util"
 	"gorm.io/gorm"
-	"likeadmin/admin/schemas/req"
-	"likeadmin/admin/schemas/resp"
-	"likeadmin/config"
-	"likeadmin/core/request"
-	"likeadmin/core/response"
-	"likeadmin/model/common"
-	"likeadmin/util"
 	"path"
 	"time"
 )

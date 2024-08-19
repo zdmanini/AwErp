@@ -1,11 +1,11 @@
 package system
 
 import (
+	"Awesome/config"
+	"Awesome/core/response"
+	"Awesome/model/system"
+	"Awesome/util"
 	"gorm.io/gorm"
-	"likeadmin/config"
-	"likeadmin/core/response"
-	"likeadmin/model/system"
-	"likeadmin/util"
 	"strconv"
 	"strings"
 )
