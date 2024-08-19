@@ -1,6 +1,8 @@
 package model
 
 import (
+	"github.com/gookit/color"
+	"github.com/jinzhu/copier"
 	uuid "github.com/satori/go.uuid"
 	"gorm.io/plugin/soft_delete"
 )
@@ -17,4 +19,11 @@ type TimeStamp struct {
 
 type SoftDelete struct {
 	DeleteTime soft_delete.DeletedAt `gorm:"index" json:"deleted_at"`
+}
+
+func Copy(toValue interface{}, fromValue interface{}) interface{} {
+	if err := copier.Copy(toValue, fromValue); err != nil {
+		color.Red.Println(err)
+	}
+	return toValue
 }

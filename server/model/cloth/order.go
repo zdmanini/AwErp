@@ -6,7 +6,6 @@ import (
 	"gorm.io/gorm"
 	"likeadmin/model"
 	"likeadmin/model/basic"
-	"likeadmin/util"
 	"strings"
 )
 
@@ -76,7 +75,7 @@ func checkOrderInfo(u *ClothOrder, tx *gorm.DB) error {
 		var style ClothStyle
 		tx.Model(&ClothStyle{}).Where("code = ?", u.Cloth.Code).First(&style)
 		if len(u.Cloth.Code) == 0 || len(style.ID.String()) == 0 {
-			util.ToolsUtil.Copy(&style, u.Cloth)
+			model.Copy(&style, u.Cloth)
 			style.Remark = fmt.Sprintf("订单编号：%s[%s] 的款式", u.Name, u.Code)
 			if err := tx.Create(&style).Error; err != nil {
 				return err
