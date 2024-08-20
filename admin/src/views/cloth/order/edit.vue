@@ -32,10 +32,11 @@
                                 <template #append>
                                     <el-button
                                         type="primary"
-                                        icon="el-icon-refresh"
-                                        @click="generateCode"
+                                        @click="methods.generateCode"
                                         circle
-                                        >自动生成</el-button
+                                        >
+                                      <icon name="el-icon-refresh" />
+                                      自动生成</el-button
                                     >
                                 </template>
                             </el-input>
@@ -50,7 +51,7 @@
                                 style="width: 360px"
                             >
                                 <el-option
-                                    v-for="item in customers"
+                                    v-for="item in state.customers"
                                     :key="item.id"
                                     :label="item.name"
                                     :value="item.name"
@@ -70,7 +71,7 @@
                         <el-form-item label="订单类型" prop="order_type">
                             <el-autocomplete
                                 v-model="formData.order_type"
-                                :fetch-suggestions="querySearchOrderType"
+                                :fetch-suggestions="methods.querySearchOrderType"
                                 placeholder="请输入订单类型"
                                 clearable
                                 style="width: 360px"
@@ -79,7 +80,7 @@
                         <el-form-item label="业务员" prop="salesman">
                             <el-autocomplete
                                 v-model="formData.salesman"
-                                :fetch-suggestions="querySearchSalesman"
+                                :fetch-suggestions="methods.querySearchSalesman"
                                 placeholder="请输入业务员"
                                 clearable
                                 style="width: 360px"
@@ -98,7 +99,7 @@
                     <el-form
                         v-if="state.active == 1"
                         ref="stepForm_1"
-                        :model="form"
+                        :model="formData"
                         :rules="rules"
                         label-position="top"
                     >
@@ -106,15 +107,15 @@
                             <el-select
                                 v-model="formData.cloth.code"
                                 placeholder="请输入款号"
-                                :remote-method="querySearchCloth"
+                                :remote-method="methods.querySearchCloth"
                                 clearable
                                 filterable
-                                @change="handleClothCodeChange"
+                                @change="methods.handleClothCodeChange"
                                 style="width: 360px"
                                 allow-create
                             >
                                 <el-option
-                                    v-for="item in cloths"
+                                    v-for="item in state.cloths"
                                     :key="item.id"
                                     :label="item.code"
                                     :value="item.code"
@@ -125,10 +126,10 @@
                             <el-select
                                 v-model="formData.cloth.name"
                                 placeholder="请输入款名"
-                                :remote-method="querySearchCloth"
+                                :remote-method="methods.querySearchCloth"
                                 clearable
                                 filterable
-                                @change="handleClothNameChange"
+                                @change="methods.handleClothNameChange"
                                 allow-create
                                 style="width: 360px"
                             >
@@ -156,10 +157,10 @@
                                 style="width: 360px"
                             >
                                 <el-option
-                                    v-for="item in colors"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value"
+                                    v-for="item in state.colors"
+                                    :key="item.id"
+                                    :label="item.name"
+                                    :value="item.name"
                                 ></el-option>
                             </el-select>
                         </el-form-item>
@@ -173,10 +174,10 @@
                                 style="width: 360px"
                             >
                                 <el-option
-                                    v-for="item in sizes"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value"
+                                    v-for="item in state.sizes"
+                                    :key="item.id"
+                                    :label="item.name"
+                                    :value="item.name"
                                 ></el-option>
                             </el-select>
                         </el-form-item>
@@ -282,7 +283,7 @@
                     <el-form
                         v-if="state.active == 2"
                         ref="stepForm_2"
-                        :model="form"
+                        :model="formData"
                         :rules="rules"
                         label-position="top"
                     >
@@ -339,7 +340,7 @@
                     <el-form
                         v-if="state.active == 3"
                         ref="stepForm_3"
-                        :model="form"
+                        :model="formData"
                         :rules="rules"
                         label-position="top"
                     >
@@ -444,32 +445,25 @@
                     <div v-if="state.active == 4">
                         <el-result icon="success" title="操作成功" sub-title="您的操作已完成！">
                             <template #extra>
-                                <el-button type="primary" @click="again">再来一单</el-button>
+                                <el-button type="primary" @click="methods.again">再来一单</el-button>
                                 <el-button @click="$router.go(-1)">返回列表</el-button>
                             </template>
                         </el-result>
                     </div>
-                    <el-button
-                        v-if="state.active > 0 && state.active < 4"
-                        @click="pre"
-                        :disabled="state.submitLoading"
-                        >上一步</el-button
-                    >
-                    <el-button v-if="state.active < 3" type="primary" @click="next"
-                        >下一步</el-button
-                    >
-                    <el-button
-                        v-if="state.active == 3"
-                        type="primary"
-                        @click="submit"
-                        :loading="state.submitLoading"
-                        >提交</el-button
-                    >
                 </el-col>
             </el-row>
         </el-card>
         <footer-btns>
-            <el-button type="primary" @click="handleSave">保存</el-button>
+            <el-button
+                v-if="state.active > 0 && state.active < 4"
+                @click="methods.pre"
+                :disabled="state.submitLoading"
+                >上一步</el-button
+            >
+            <el-button v-if="state.active < 3" type="primary" @click="methods.next"
+                >下一步</el-button
+            >
+            <el-button v-if="state.active == 3" type="primary" @click="handleSave">保存</el-button>
         </footer-btns>
     </div>
 </template>
@@ -485,6 +479,7 @@ import { infoQuery } from '@/api/basic/info'
 import zdmFormTable from '@/components/zdmFormTable/index.vue'
 const route = useRoute()
 const router = useRouter()
+const instance = getCurrentInstance()
 const formData = reactive({
     id: '',
     // 基础
@@ -519,6 +514,7 @@ const state = reactive({
     submitLoading: false,
     sizes: [],
     colors: [],
+    crafts: [],
     procedures: [],
     order_types: [],
     salesmans: [],
@@ -584,10 +580,68 @@ const methods = {
         }
         return state.allSize[i]
     },
-  addConsumptionBtn: () => {
-    const consumption = JSON.parse(JSON.stringify(state.addConsumption))
-    formData.consumption.push(consumption)
-  },
+    addConsumptionBtn: () => {
+        const consumption = JSON.parse(JSON.stringify(state.addConsumption))
+        formData.consumption.push(consumption)
+    },
+    handleClothCodeChange: (val) => {
+        const cloth = state.cloths.find((item) => item.code == val)
+        if (cloth) {
+            formData.cloth = cloth
+            formDataprocedure = cloth.procedures
+        }
+    },
+    handleClothNameChange: (val) => {
+        const cloth = state.cloths.find((item) => item.name == val)
+        if (cloth) {
+            formData.cloth = clothformData.procedure = cloth.procedures
+        }
+    },
+    generateCode: () => {
+        const date = `${new Date().getFullYear()}${
+            new Date().getMonth() + 1
+        }${new Date().getDate()}`.slice(-8)
+        formData.code = `AWS${date}${Math.random().toString().slice(-6)}`
+    },
+    createFilterCustomer: (queryString) => {
+        return (item) => {
+            return item.name.toLowerCase().indexOf(queryString.toLowerCase()) === 0
+        }
+    },
+    querySearchSalesman: (queryString, cb) => {
+        const results = queryString
+            ? state.salesmans.filter(methods.createFilter(queryString))
+            : state.salesmans
+        cb(results)
+    },
+    querySearchOrderType: (queryString, cb) => {
+        const results = queryString
+            ? state.order_types.filter(methods.createFilter(queryString))
+            : state.order_types
+        cb(results)
+    },
+    createFilter: (queryString) => {
+        return (item) => {
+            return item.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
+        }
+    },
+    next: () => {
+        const formName = `stepForm_${state.active}`
+        instance.refs[formName].validate((valid) => {
+            if (valid) {
+                state.active++
+            } else {
+                return false
+            }
+        })
+    },
+    pre: () => {
+        state.active--
+    },
+    again() {
+        state.active = 0
+        formData.code = ''
+    }
 }
 
 const getDetails = async () => {
@@ -610,6 +664,17 @@ const { optionsData } = useDictOptions<{
         }
     }
 })
+
+const getInfo = async () => {
+    const data = await infoQuery({
+        type: '颜色,尺码,工序,工艺,订单类型'
+    })
+    state.sizes = data['尺码']
+    state.colors = data['颜色']
+    state.procedures = data['工序']
+    state.crafts = data['工艺']
+    state.order_types = data['订单类型']
+}
 
 const handleSave = async () => {
     await formRef.value?.validate()
@@ -711,6 +776,7 @@ watch(
 )
 
 route.query.id && getDetails()
+getInfo()
 </script>
 
 <style scoped>

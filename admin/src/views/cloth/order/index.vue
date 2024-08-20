@@ -50,9 +50,9 @@
         <el-card class="!border-none mt-4" shadow="never">
             <div>
                 <router-link
-                    v-perms="['cloth:order:add', 'cloth:order:publish']"
+                    v-perms="['cloth:order:add', 'cloth:order:add/edit']"
                     :to="{
-                        path: getRoutePath('cloth:order:publish')
+                        path: getRoutePath('cloth:order:add/edit')
                     }"
                 >
                     <el-button type="primary" class="mb-4">
