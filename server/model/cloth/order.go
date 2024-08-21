@@ -76,7 +76,10 @@ func (u *ClothOrder) AfterUpdate(tx *gorm.DB) error {
 func checkOrderInfo(u *ClothOrder, tx *gorm.DB) error {
 	if u.Cloth != nil {
 		var style ClothStyle
-		tx.Model(&ClothStyle{}).Where("code = ?", u.Cloth.Code).First(&style)
+		err := tx.Model(&ClothStyle{}).Where("code = ? and name = ?", u.Cloth.Code, u.Cloth.Name).First(&style).Error
+		if err != nil {
+			return err
+		}
 		if len(u.Cloth.Code) == 0 || len(style.ID.String()) == 0 {
 			model.Copy(&style, u.Cloth)
 			style.Remark = fmt.Sprintf("订单编号：%s[%s] 的款式", u.Name, u.Code)

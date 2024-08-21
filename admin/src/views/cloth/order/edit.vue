@@ -142,10 +142,7 @@
                             </el-select>
                         </el-form-item>
                         <el-form-item label="图片" prop="cloth.picture">
-                            <sc-upload
-                                v-model="formData.cloth.picture"
-                                title="上传图片"
-                            ></sc-upload>
+                            <material-picker v-model="formData.cloth.picture" :limit="1" />
                         </el-form-item>
                         <el-form-item label="颜色" prop="cloth.colors">
                             <el-select
@@ -288,10 +285,10 @@
                         label-position="top"
                     >
                         <el-form-item label="工序" prop="procedure">
-                            <sc-form-table
+                            <zdm-form-table
                                 ref="procedure"
                                 v-model="formData.procedure"
-                                :addTemplate="addProcedureTemplate"
+                                :addTemplate="state.addProcedureTemplate"
                                 placeholder="暂无数据"
                             >
                                 <el-table-column prop="name" label="工序" width="180">
@@ -307,9 +304,9 @@
                                         >
                                             <el-option
                                                 v-for="item in procedures"
-                                                :key="item.value"
-                                                :label="item.label"
-                                                :value="item.value"
+                                                :key="item.id"
+                                                :label="item.name"
+                                                :value="item.name"
                                             ></el-option>
                                         </el-select>
                                     </template>
@@ -334,7 +331,7 @@
                                         <el-switch v-model="scope.row.is_completed"></el-switch>
                                     </template>
                                 </el-table-column>
-                            </sc-form-table>
+                            </zdm-form-table>
                         </el-form-item>
                     </el-form>
                     <el-form
@@ -547,8 +544,24 @@ const state = reactive({
 const { removeTab } = useMultipleTabs()
 const formRef = shallowRef<FormInstance>()
 const rules = reactive({
-    title: [{ required: true, message: '请输入款式标题', trigger: 'blur' }],
-    cid: [{ required: true, message: '请选择款式栏目', trigger: 'blur' }]
+  name: [{ required: true, message: '请输入合同名称', trigger: 'blur' }],
+  code: [{ required: true, message: '请输入合同编号', trigger: 'blur' }],
+  customer: [{ required: true, message: '请输入客户名称', trigger: 'blur' }],
+  delivery_date: [{ required: true, message: '请选择交货日期', trigger: 'blur' }],
+  order_type: [{ required: true, message: '请选择订单类型', trigger: 'blur' }],
+  salesman: [{ required: true, message: '请选择业务员', trigger: 'blur' }],
+  remark: [],
+  // 款式
+  'cloth.name': [{ required: true, message: '请输入款名', trigger: 'blur' }],
+  'cloth.code': [{ required: true, message: '请输入款号', trigger: 'blur' }],
+  'cloth.picture': [],
+  'cloth.colors': [{ required: true, message: '请选择颜色', trigger: 'blur' }],
+  'cloth.sizes': [{ required: true, message: '请选择尺码', trigger: 'blur' }],
+  'cloth.year': [{ required: true, message: '请输入年份', trigger: 'blur' }],
+  'cloth.season': [{ required: true, message: '请输入季节', trigger: 'blur' }],
+  'cloth.unit_price': [{ required: true, message: '请输入单价', trigger: 'blur' }],
+  // 工序
+  procedure: [{ required: true, message: '请添加工序', trigger: 'blur' }]
 })
 
 const methods = {
@@ -653,17 +666,6 @@ const getDetails = async () => {
         formData[key] = data[key]
     })
 }
-
-const { optionsData } = useDictOptions<{
-    dict: any[]
-}>({
-    dict: {
-        api: infoQuery,
-        params: {
-            type: '颜色,尺码,工序,工艺'
-        }
-    }
-})
 
 const getInfo = async () => {
     const data = await infoQuery({
