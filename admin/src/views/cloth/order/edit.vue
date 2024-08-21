@@ -64,7 +64,7 @@
                                 type="date"
                                 placeholder="选择日期"
                                 style="width: 360px"
-                                value-format="YYYY-MM-DD"
+                                value-format="x"
                             >
                             </el-date-picker>
                         </el-form-item>
@@ -470,7 +470,7 @@ import { getCurrentInstance } from 'vue'
 import type { FormInstance } from 'element-plus'
 import feedback from '@/utils/feedback'
 import { useDictOptions } from '@/hooks/useDictOptions'
-import { styleDetail, styleEdit, styleAdd } from '@/api/cloth/style'
+import { orderDetail, orderEdit, orderAdd } from '@/api/cloth/order'
 import useMultipleTabs from '@/hooks/useMultipleTabs'
 import { infoQuery } from '@/api/basic/info'
 import zdmFormTable from '@/components/zdmFormTable/index.vue'
@@ -483,6 +483,7 @@ const formData = reactive({
     name: '', // 合同名称
     code: '', // 合同编号
     customer: '', // 客户名称
+    customer_id: 0,
     delivery_date: '', // 交货日期
     order_type: '', // 订单类型
     salesman: '', // 业务员
@@ -658,7 +659,7 @@ const methods = {
 }
 
 const getDetails = async () => {
-    const data = await styleDetail({
+    const data = await orderDetail({
         id: route.query.id
     })
     Object.keys(formData).forEach((key) => {
@@ -681,9 +682,9 @@ const getInfo = async () => {
 const handleSave = async () => {
     await formRef.value?.validate()
     if (route.query.id) {
-        await styleEdit(formData)
+        await orderEdit(formData)
     } else {
-        await styleAdd(formData)
+        await orderAdd(formData)
     }
     feedback.msgSuccess('操作成功')
     removeTab()
@@ -722,7 +723,7 @@ watch(
             total_price += item.nums * formData.cloth.unit_price
         })
         formData.total_price = total_price
-    }
+    },
 )
 
 watch(

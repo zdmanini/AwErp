@@ -47,5 +47,6 @@ func dst() []interface{} {
 		&basic.BasicInfoType{},
 		// cloth
 		&cloth.ClothStyle{},
+		&cloth.ClothOrder{},
 	}
 }

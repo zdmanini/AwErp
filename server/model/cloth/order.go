@@ -3,6 +3,7 @@ package cloth
 import (
 	"Awesome/model"
 	"Awesome/model/basic"
+	"errors"
 	"fmt"
 	uuid "github.com/satori/go.uuid"
 	"gorm.io/gorm"
@@ -64,6 +65,7 @@ func (u *ClothOrder) BeforeCreate(tx *gorm.DB) (err error) {
 }
 
 func (u *ClothOrder) AfterCreate(tx *gorm.DB) error {
+	u.buildDB(tx)
 	return checkOrderInfo(u, tx)
 }
 
@@ -77,10 +79,7 @@ func checkOrderInfo(u *ClothOrder, tx *gorm.DB) error {
 	if u.Cloth != nil {
 		var style ClothStyle
 		err := tx.Model(&ClothStyle{}).Where("code = ? and name = ?", u.Cloth.Code, u.Cloth.Name).First(&style).Error
-		if err != nil {
-			return err
-		}
-		if len(u.Cloth.Code) == 0 || len(style.ID.String()) == 0 {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
 			model.Copy(&style, u.Cloth)
 			style.Remark = fmt.Sprintf("订单编号：%s[%s] 的款式", u.Name, u.Code)
 			if err := tx.Create(&style).Error; err != nil {

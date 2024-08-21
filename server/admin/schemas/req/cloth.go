@@ -83,11 +83,11 @@ type ClothOrderQueryReq struct {
 type ClothOrderAddReq struct {
 	Name         string            `json:"name" binding:"required,min=1,max=30"`
 	Code         string            `json:"code"`
-	CustomerId   uint8             `json:"customer_id" binding:"required"`
+	CustomerId   uint8             `json:"customer_id"`
 	DeliveryDate int64             `json:"delivery_date" binding:"required"`
-	OrderType    string            `json:"order_type" binding:"required,oneof=1 2"`
+	OrderType    string            `json:"order_type"`
 	Salesman     string            `json:"salesman"`
-	Cloth        *ClothStyleAddReq `json:"cloth" binding:"required"`
+	Cloth        *ClothStyleAddReq `json:"cloth"`
 	Total        uint              `json:"total"`
 	TotalPrice   float64           `json:"total_price"`
 	Contains     []OrderContain    `json:"contains"`
@@ -108,9 +108,9 @@ type ClothOrderEditReq struct {
 	ID           string             `json:"id" binding:"required"`
 	Name         string             `json:"name" binding:"required,min=1,max=30"`
 	Code         string             `json:"code"`
-	CustomerId   uint8              `json:"customer_id" binding:"required"`
-	DeliveryDate int64              `json:"delivery_date" binding:"required"`
-	OrderType    string             `json:"order_type" binding:"required,oneof=1 2"`
+	CustomerId   uint8              `json:"customer_id"`
+	DeliveryDate int64              `json:"delivery_date"`
+	OrderType    string             `json:"order_type"`
 	Salesman     string             `json:"salesman"`
 	Cloth        *ClothStyleEditReq `json:"cloth" binding:"required"`
 	Total        uint               `json:"total"`
