@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	uuid "github.com/satori/go.uuid"
+	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"io/ioutil"
 	"os"
@@ -29,7 +30,7 @@ type ClothOrder struct {
 	Procedure    []Procedure          `gorm:"type:json;serializer:json" json:"procedure"`
 	Consumption  []Consumption        `gorm:"type:json;serializer:json" json:"consumption"`
 	Crafts       []Craft              `gorm:"type:json;serializer:json" json:"crafts"`
-	Status       uint8                `gorm:"type:tinyint(1);not null;default:1" json:"status"`
+	Status       uint8                `gorm:"type:tinyint(1);not null;default:0" json:"status"`
 	Remark       string               `gorm:"type:varchar(255);not null;default:''" json:"remark"`
 	model.SoftDelete
 }
@@ -62,6 +63,11 @@ func (u *ClothOrder) BeforeCreate(tx *gorm.DB) (err error) {
 		u.Code = strings.Split(u.Model.ID.String(), "-")[0]
 	}
 	return
+}
+
+type OrderDatabase struct {
+	OrderID string `json:"order_id" gorm:"type:varchar(255);not null;default:''"`
+	Path    string `json:"path" gorm:"type:varchar(255);not null;default:''"`
 }
 
 func (u *ClothOrder) AfterCreate(tx *gorm.DB) error {
@@ -99,6 +105,13 @@ func (u *ClothOrder) buildDB(db *gorm.DB) error {
 	err := copyAndRenameFile(source, dist)
 	if err != nil {
 		return fmt.Errorf("复制文件失败：%s", err.Error())
+	}
+	n := OrderDatabase{
+		OrderID: u.ID.String(),
+		Path:    dist,
+	}
+	if err := db.Create(&n).Error; err != nil {
+		return fmt.Errorf("创建数据库失败：%s", err.Error())
 	}
 	return nil
 }
@@ -138,4 +151,19 @@ func copyAndRenameFile(srcPath string, dstPath string) error {
 	}
 	println("新文件已创建：", dstPath)
 	return nil
+}
+
+func GetDB(ID string, db *gorm.DB) (*gorm.DB, error) {
+	var order OrderDatabase
+	db.Model(&OrderDatabase{}).Where("order_id = ?", ID).First(&order)
+	if len(order.OrderID) == 0 {
+		return nil, errors.New("数据库不存在")
+	}
+	tg, err := gorm.Open(sqlite.Open(order.Path), &gorm.Config{})
+	if err != nil {
+		return nil, err
+	}
+	tg.AutoMigrate(&TailorInfo{}, &TailorPiece{}, &TailorPieceProcess{})
+
+	return tg, nil
 }
