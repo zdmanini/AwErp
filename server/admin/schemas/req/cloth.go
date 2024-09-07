@@ -28,7 +28,7 @@ type ClothStyleAddReq struct {
 }
 
 type ClothStyleEditReq struct {
-	ID          string   `json:"id" binding:"required"`
+	ID          string   `json:"id"`
 	Name        string   `json:"name" binding:"required,min=1,max=30"`
 	Code        string   `json:"code"`
 	Picture     string   `json:"picture"`
@@ -112,7 +112,7 @@ type ClothOrderEditReq struct {
 	DeliveryDate int64              `json:"delivery_date"`
 	OrderType    string             `json:"order_type"`
 	Salesman     string             `json:"salesman"`
-	Cloth        *ClothStyleEditReq `json:"cloth" binding:"required"`
+	Cloth        *ClothStyleEditReq `json:"cloth"`
 	Total        uint               `json:"total"`
 	TotalPrice   float64            `json:"total_price"`
 	Contains     []OrderContain     `json:"contains"`
@@ -121,4 +121,33 @@ type ClothOrderEditReq struct {
 	Crafts       []Craft            `json:"crafts"`
 	Status       uint8              `json:"status" binding:"oneof=0 1"`
 	Remark       string             `json:"remark"`
+}
+
+type TailorCuttingQueryReq struct {
+	OrderNo  string `form:"order_no"`
+	BedNo    string `form:"bed_no"`
+	TailorId uint   `form:"tailor_id"`
+	request.TimeRangeReq
+}
+
+type TailorCuttingAddReq struct {
+	OrderNo  string               `form:"json:"order_no" binding:"required"`
+	BedNo    string               `form:"json:"bed_no" binding:"required"`
+	TailorId uint                 `form:"json:"tailor_id" binding:"required"`
+	StabNo   uint                 `json:"stab_no"`
+	Piece    []TailorCuttingPiece `json:"piece"`
+}
+type TailorCuttingPiece struct {
+	Color string `json:"color"`
+	Size  string `json:"size"`
+	Nums  uint   `json:"nums"`
+}
+
+type TailorCuttingEditReq struct {
+	ID       string               `form:"id" binding:"required"`
+	OrderNo  string               `form:"json:"order_no" binding:"required"`
+	BedNo    string               `form:"json:"bed_no" binding:"required"`
+	TailorId uint                 `form:"json:"tailor_id" binding:"required"`
+	StabNo   uint                 `json:"stab_no"`
+	Piece    []TailorCuttingPiece `json:"piece"`
 }

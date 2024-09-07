@@ -8,6 +8,7 @@ import (
 	"Awesome/model/cloth"
 	"fmt"
 	"gorm.io/gorm"
+	"sync"
 )
 
 type ClothOrderService interface {
@@ -19,11 +20,11 @@ type ClothOrderService interface {
 	Change(id string) (e error)
 }
 
-type basicOrderService struct {
+type clothOrderService struct {
 	db *gorm.DB
 }
 
-func (b basicOrderService) List(page request.PageReq, req req.ClothOrderQueryReq) (res response.PageResp, e error) {
+func (b clothOrderService) List(page request.PageReq, req req.ClothOrderQueryReq) (res response.PageResp, e error) {
 	//TODO implement me
 	limit := page.PageSize
 	offset := page.PageSize * (page.PageNo - 1)
@@ -59,17 +60,71 @@ func (b basicOrderService) List(page request.PageReq, req req.ClothOrderQueryReq
 	if err := query.Limit(limit).Offset(offset).Order("create_time desc").Find(&list).Error; err != nil {
 		return
 	}
-	var resList []resp.ClothOrderResp
-	response.Copy(&resList, list)
+	//var resList []resp.ClothOrderResp
+	//response.Copy(&resList, list)
+	data := make([]resp.ClothOrderResp, 0)
+	// 创建一个带缓冲的channel，用于接收goroutine的结果
+	results := make(chan resp.ClothOrderResp, len(list))
+	// 创建一个WaitGroup，用于等待所有goroutine完成
+	var wg sync.WaitGroup
+	// channel的容量为30，表示最多只能有30个goroutine同时执行
+	channel := make(chan bool, 30)
+
+	for _, v := range list {
+		wg.Add(1)
+		go func(v cloth.ClothOrder) {
+			channel <- true
+			// 等待channel通知
+			<-channel
+			// 从channel中取出数据
+			defer wg.Done()
+			var r resp.ClothOrderResp
+			response.Copy(&r, v)
+			var progress resp.ClothOrderProgress
+			db, err := cloth.GetDB(v.ID.String(), b.db)
+			if db == nil || err != nil {
+				progress = resp.ClothOrderProgress{
+					Total:   int64(v.Total),
+					Done:    0,
+					Percent: 0,
+					Cuted:   0,
+				}
+				r.Progress = progress
+				results <- r
+				return
+			}
+			var pieces []cloth.TailorPiece
+			db.Model(&cloth.TailorPiece{}).Find(&pieces)
+			progress.Total = int64(v.Total)
+			var completed int64
+			for _, v := range pieces {
+				if v.IsCompleted {
+					completed++
+				}
+			}
+			progress.Done = completed
+			progress.Percent = float64(progress.Done) / float64(progress.Total) * 100
+			progress.Cuted = progress.Total - progress.Done
+			r.Progress = progress
+			results <- r
+		}(v)
+	}
+	// 等待所有goroutine完成
+	wg.Wait()
+	close(results)
+	for v := range results {
+		data = append(data, v)
+	}
+
 	return response.PageResp{
 		PageNo:   page.PageNo,
 		PageSize: page.PageSize,
 		Count:    count,
-		Lists:    resList,
+		Lists:    data,
 	}, nil
 }
 
-func (b basicOrderService) Detail(id string) (res resp.ClothOrderResp, e error) {
+func (b clothOrderService) Detail(id string) (res resp.ClothOrderResp, e error) {
 	//TODO implement me
 	var item cloth.ClothOrder
 	err := b.db.Where("id = ?", id).First(&item).Error
@@ -80,7 +135,7 @@ func (b basicOrderService) Detail(id string) (res resp.ClothOrderResp, e error) 
 	return
 }
 
-func (b basicOrderService) Add(req req.ClothOrderAddReq) (e error) {
+func (b clothOrderService) Add(req req.ClothOrderAddReq) (e error) {
 	//TODO implement me
 	var item cloth.ClothOrder
 	response.Copy(&item, req)
@@ -91,7 +146,7 @@ func (b basicOrderService) Add(req req.ClothOrderAddReq) (e error) {
 	return
 }
 
-func (b basicOrderService) Edit(req req.ClothOrderEditReq) (e error) {
+func (b clothOrderService) Edit(req req.ClothOrderEditReq) (e error) {
 	//TODO implement me
 	var item cloth.ClothOrder
 	err := b.db.Where("id = ?", req.ID).First(&item).Error
@@ -109,7 +164,7 @@ func (b basicOrderService) Edit(req req.ClothOrderEditReq) (e error) {
 	return
 }
 
-func (b basicOrderService) Del(id string) (e error) {
+func (b clothOrderService) Del(id string) (e error) {
 	//TODO implement me
 	err := b.db.Where("id = ?", id).Delete(&cloth.ClothOrder{}).Error
 	if e = response.CheckErr(err, "Del Delete err"); e != nil {
@@ -118,7 +173,7 @@ func (b basicOrderService) Del(id string) (e error) {
 	return
 }
 
-func (b basicOrderService) Change(id string) (e error) {
+func (b clothOrderService) Change(id string) (e error) {
 	//TODO implement me
 	var item cloth.ClothOrder
 	err := b.db.Where("id = ?", id).First(&item).Error
@@ -138,5 +193,5 @@ func (b basicOrderService) Change(id string) (e error) {
 
 // NewClothOrderService returns a new ClothOrderService
 func NewClothOrderService(db *gorm.DB) ClothOrderService {
-	return &basicOrderService{db: db}
+	return &clothOrderService{db: db}
 }

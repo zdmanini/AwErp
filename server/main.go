@@ -7,8 +7,7 @@ import (
 	"Awesome/core"
 	"Awesome/core/response"
 	"Awesome/dongming"
-	genRouters "Awesome/generator/routers"
-	gen "Awesome/generator/service"
+	//gen "Awesome/generator/service"
 	"Awesome/middleware"
 	"github.com/gin-gonic/gin"
 	"log"
@@ -20,7 +19,7 @@ import (
 // initDI 初始化DI
 func initDI() {
 	regFunctions := admin.InitFunctions
-	regFunctions = append(regFunctions, gen.InitFunctions...)
+	//regFunctions = append(regFunctions, gen.InitFunctions...)
 	regFunctions = append(regFunctions, core.GetDB)
 	for i := 0; i < len(regFunctions); i++ {
 		if err := core.ProvideForDI(regFunctions[i]); err != nil {
@@ -50,7 +49,7 @@ func initRouter() *gin.Engine {
 	group := router.Group("/admin")
 
 	routers := adminRouters.InitRouters[:]
-	routers = append(routers, genRouters.InitRouters...)
+	//routers = append(routers, genRouters.InitRouters...)
 	for i := 0; i < len(routers); i++ {
 		core.RegisterGroup(group, routers[i])
 	}

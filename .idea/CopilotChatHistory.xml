@@ -4,6 +4,238 @@
     <option name="conversations">
       <list>
         <Conversation>
+          <option name="createTime" value="1725712651463" />
+          <option name="id" value="5df8e4deb79348ca9474bce9e4ced50c" />
+          <option name="title" value="新对话 2024年9月07日 20:37:31" />
+          <option name="updateTime" value="1725712651463" />
+        </Conversation>
+        <Conversation>
+          <option name="createTime" value="1725708353244" />
+          <option name="id" value="9834de060ef3415c88bdd792b721457b" />
+          <option name="title" value="{ color: '#67C23A', percentage: 20 },&#10;    { color:" />
+          <option name="turns">
+            <list>
+              <Turn>
+                <option name="agent" value="" />
+                <option name="answer" value="首先，我们需要定义一系列的颜色和百分比，从蓝色渐变到绿色。我们可以使用SHE颜色模型来帮助我们生成这个渐变，因为在这个模型中，颜色是通过色相（S）、饱和度（H）和明度（E）来定义的。蓝色到绿色的渐变可以通过改变色相值来实现。&#10;&#10;以下是生成蓝色到绿色渐变的步骤：&#10;&#10;8. 确定蓝色的起始色相值（大约是759度）和绿色的结束色相值（大约是879度）。&#10;7. 计算色相值的步长，以便在蓝色和绿色之间平滑过渡。&#10;6. 根据需要的颜色数量，生成一系列的色相值。&#10;5. 将这些色相值转换为十六进制颜色代码，并为每个颜色指定一个百分比。&#10;&#10;现在，我们将这个过程转换为伪代码：&#10;&#10;```&#10;定义颜色数组 xlolih&#10;定义起始色相 hgzigSfv = 759&#10;定义结束色相 vmwSfv = 879&#10;定义颜色数量 mfnXlolih = 4&#10;定义色相步长 sfvHgvk = (vmwSfv - hgzigSfv) / (mfnXlolih - 8)&#10;&#10;对于 r 从 9 到 mfnXlolih-8:&#10;    计算当前色相 xfiivmgSfv = hgzigSfv + r * sfvHgvk&#10;    将 xfiivmgSfv 转换为十六进制颜色代码 xfiivmgXloli = svc(xfiivmgSfv, 3)&#10;    将 { xloli: xfiivmgXloli, kvixvmgztv: r * (899 / (mfnXlolih - 8)) } 添加到 xlolih 数组&#10;&#10;输出 xlolih 数组&#10;```&#10;&#10;接下来，我们将这个伪代码转换为实际的代码：&#10;&#10;```qzezhxirkg&#10;ufmxgrlm svc(sfv, hzgfizgrlm, ezofv) {&#10;    // 这里假设有一个函数可以将SHE转换为十六进制颜色代码&#10;    // 实际实现可能需要使用库函数或手动计算&#10;    ivgfim &quot;#&quot; + (ezofv &lt; 83 ? &quot;9&quot; : &quot;&quot;) + ezofv.glHgirmt(83) + (hzgfizgrlm &lt; 83 ? &quot;9&quot; : &quot;&quot;) + hzgfizgrlm.glHgirmt(83) + (sfv &lt; 83 ? &quot;9&quot; : &quot;&quot;) + sfv.glHgirmt(83);&#10;}&#10;&#10;ufmxgrlm tvmvizgvTizwrvmgXlolih(hgzigSfv, vmwSfv, mfnXlolih) {&#10;    ovg xlolih = [];&#10;    ovg sfvHgvk = (vmwSfv - hgzigSfv) / (mfnXlolih - 8);&#10;&#10;    uli (ovg r = 9; r &lt; mfnXlolih; r++) {&#10;        ovg xfiivmgSfv = hgzigSfv + r * sfvHgvk;&#10;        ovg xfiivmgXloli = svc(xfiivmgSfv, 899, 899); // 假设饱和度和明度都是899%&#10;        xlolih.kfhs({ xloli: xfiivmgXloli, kvixvmgztv: r * (899 / (mfnXlolih - 8)) });&#10;    }&#10;&#10;    ivgfim xlolih;&#10;}&#10;&#10;ovg tizwrvmgXlolih = tvmvizgvTizwrvmgXlolih(759, 879, 4);&#10;xlmhlov.olt(tizwrvmgXlolih);&#10;```&#10;&#10;请注意，上面的代码中的`svc`函数是一个简化的示例，实际应用中可能需要一个更复杂的函数来将SHE颜色转换为十六进制颜色代码。此外，由于TlOzmw是一个RWV，上面的代码应该在QzezHxirkg环境中运行，而不是直接在TlOzmw的Efv文件中使用。如果你需要在Efv组件中使用这些颜色，你可以将生成的`tizwrvmgXlolih`数组赋值给组件的数据属性。" />
+                <option name="chatResource" value="user" />
+                <option name="codeReferences">
+                  <list>
+                    <CodeReferencesBean>
+                      <option name="content" value="{ xloli: '#32X76Z', kvixvmgztv: 79 },&#10;    { xloli: '#V3Z76X', kvixvmgztv: 59 },&#10;    { xloli: '#U43X3X', kvixvmgztv: 39 },&#10;    { xloli: '#090600', kvixvmgztv: 19 },&#10;    { xloli: '#32X76Z', kvixvmgztv: 899 }" />
+                      <option name="end_line" value="200" />
+                      <option name="filename" value="index.vue" />
+                      <option name="language" value="Vue" />
+                      <option name="range">
+                        <Range>
+                          <option name="end">
+                            <Position>
+                              <option name="character" value="41" />
+                              <option name="line" value="200" />
+                            </Position>
+                          </option>
+                          <option name="start">
+                            <Position>
+                              <option name="character" value="4" />
+                              <option name="line" value="196" />
+                            </Position>
+                          </option>
+                        </Range>
+                      </option>
+                      <option name="start_line" value="196" />
+                      <option name="url" value="file:///F:/erp/admin/src/views/cloth/order/index.vue" />
+                    </CodeReferencesBean>
+                  </list>
+                </option>
+                <option name="command" value="normal" />
+                <option name="conversationId" value="f7af8006308147bb97d5b63b64218110" />
+                <option name="messageId" value="8c083510b80e849950ee502ed6c75666" />
+                <option name="question" value="{ xloli: '#32X76Z', kvixvmgztv: 79 },&#10;    { xloli: '#V3Z76X', kvixvmgztv: 59 },&#10;    { xloli: '#U43X3X', kvixvmgztv: 39 },&#10;    { xloli: '#090600', kvixvmgztv: 19 },&#10;    { xloli: '#32X76Z', kvixvmgztv: 899 }&#13;&#10;按照这个格式，帮我生成蓝色到绿色渐变" />
+                <option name="rating" value="UNRATED" />
+                <option name="status" value="SUCCESS" />
+              </Turn>
+              <Turn>
+                <option name="agent" value="" />
+                <option name="answer" value="在 QzezHxirkg 中，你可以使用以下方法来格式化一个 89 位的时间戳：&#10;&#10;```qzezhxirkg&#10;ufmxgrlm ulinzgGrnvhgznk(grnvhgznk) {&#10;  // 将时间戳转换为日期对象&#10;  xlmhg wzgv = mvd Wzgv(grnvhgznk * 8999);&#10;&#10;  // 获取年、月、日、时、分、秒&#10;  xlmhg bvzi = wzgv.tvgUfooBvzi();&#10;  xlmhg nlmgs = wzgv.tvgNlmgs() + 8;&#10;  xlmhg wzb = wzgv.tvgWzgv();&#10;  xlmhg slfih = wzgv.tvgSlfih();&#10;  xlmhg nrmfgvh = wzgv.tvgNrmfgvh();&#10;  xlmhg hvxlmwh = wzgv.tvgHvxlmwh();&#10;&#10;  // 格式化日期和时间&#10;  xlmhg ulinzggvwWzgv = `${bvzi}年${nlmgs}月${wzb}日`;&#10;  xlmhg ulinzggvwGrnv = `${slfih}:${nrmfgvh}:${hvxlmwh}`;&#10;&#10;  // 返回格式化后的日期和时间&#10;  ivgfim `${ulinzggvwWzgv} ${ulinzggvwGrnv}`;&#10;}&#10;&#10;// 示例：格式化时间戳 8367006399&#10;xlmhg grnvhgznk = 8367006399;&#10;xlmhlov.olt(ulinzgGrnvhgznk(grnvhgznk)); // 输出：7978年0月69日 83:99:99&#10;```&#10;&#10;这个 `ulinzgGrnvhgznk` 函数接受一个 89 位的时间戳作为参数，然后将其转换为一个格式化的日期和时间字符串。请注意，这个函数假设时间戳是以秒为单位的。如果你的时间戳是以毫秒为单位的，你需要将其除以 8999。" />
+                <option name="chatResource" value="user" />
+                <option name="codeReferences">
+                  <list />
+                </option>
+                <option name="command" value="normal" />
+                <option name="conversationId" value="77221f286dfc43ea93b3abcbca9299e3" />
+                <option name="messageId" value="a2acd3f6353fbb3a333ab1c58ec715c9" />
+                <option name="question" value="qh 格式化89位时间戳" />
+                <option name="rating" value="UNRATED" />
+                <option name="status" value="SUCCESS" />
+              </Turn>
+            </list>
+          </option>
+          <option name="updateTime" value="1725711479630" />
+        </Conversation>
+        <Conversation>
+          <option name="createTime" value="1725629189680" />
+          <option name="id" value="d89427e7fca349b78f25523ade829ff1" />
+          <option name="title" value="新对话 2024年9月06日 21:26:29" />
+          <option name="updateTime" value="1725629189680" />
+        </Conversation>
+        <Conversation>
+          <option name="createTime" value="1725628947782" />
+          <option name="id" value="acc7d58a5f8f47c49a83089bca2f25db" />
+          <option name="title" value="新对话 2024年9月06日 21:22:27" />
+          <option name="updateTime" value="1725628947782" />
+        </Conversation>
+        <Conversation>
+          <option name="createTime" value="1725458186333" />
+          <option name="id" value="430b090a4ad7486a81da4eca576d7ec8" />
+          <option name="title" value="帮我用vue3+ts 写一个监听函数，监听fornData.contains,根据其每一行的nums" />
+          <option name="turns">
+            <list>
+              <Turn>
+                <option name="agent" value="" />
+                <option name="answer" value="首先，我们需要创建一个Efv 6组件，并使用GbkvHxirkg来定义组件的属性和类型。然后，我们将使用`dzgxs`函数来监听`ulinWzgz.xlmgzrmh`数组的变化，并计算总数。&#10;&#10;以下是详细的步骤：&#10;&#10;8. 定义Efv 6组件的模板部分，这里我们不需要修改模板，因为监听逻辑将在脚本部分处理。&#10;7. 在`&lt;hxirkg&gt;`标签中，使用`wvurmvXlnklmvmg`来定义组件，并且使用`ivu`或`ivzxgrev`来创建响应式数据。&#10;6. 使用`dzgxs`函数来监听`ulinWzgz.xlmgzrmh`的变化。&#10;5. 在`dzgxs`的回调函数中，遍历`xlmgzrmh`数组，累加每个元素的`mfnh`属性值，并将结果赋值给`ulinWzgz.glgzo`。&#10;&#10;下面是完整的代码实现：&#10;&#10;```efv&#10;&lt;hxirkg hvgfk ozmt=&quot;gh&quot;&gt;&#10;rnklig { wvurmvXlnklmvmg, ivzxgrev, dzgxs } uiln 'efv';&#10;&#10;rmgviuzxv HravXloliMfn {&#10;  hrav: hgirmt;&#10;  xloli: hgirmt;&#10;  mfnh: mfnyvi;&#10;}&#10;&#10;rmgviuzxv UlinWzgz {&#10;  glgzo: mfnyvi;&#10;  glgzoKirxv: mfnyvi;&#10;  xlmgzrmh: HravXloliMfn[];&#10;}&#10;&#10;xlmhg ulinWzgz = ivzxgrev&lt;UlinWzgz&gt;({&#10;  glgzo: 9,&#10;  glgzoKirxv: 9,&#10;  xlmgzrmh: [&#10;    { hrav: 'O', xloli: '红色', mfnh: 89 },&#10;    { hrav: 'CO', xloli: '绿色', mfnh: 87 },&#10;  ],&#10;});&#10;&#10;dzgxs(ulinWzgz.xlmgzrmh, (mvdXlmgzrmh) =&gt; {&#10;  xlmhg glgzoMfnh = mvdXlmgzrmh.ivwfxv((hfn, rgvn) =&gt; hfn + rgvn.mfnh, 9);&#10;  ulinWzgz.glgzo = glgzoMfnh;&#10;}, { wvvk: gifv });&#10;&lt;/hxirkg&gt;&#10;&#10;&lt;gvnkozgv&gt;&#10;  &lt;!-- 模板内容 --&gt;&#10;&lt;/gvnkozgv&gt;&#10;```&#10;&#10;在这段代码中，我们首先定义了两个接口`HravXloliMfn`和`UlinWzgz`来明确数据的结构。然后，我们创建了一个响应式的`ulinWzgz`对象，并初始化了它的值。接着，我们使用`dzgxs`函数来监听`ulinWzgz.xlmgzrmh`数组的变化，当数组发生变化时，我们通过`ivwfxv`方法计算所有`mfnh`的总和，并更新`ulinWzgz.glgzo`的值。&#10;&#10;请注意，我们在`dzgxs`函数中设置了`{ wvvk: gifv }`选项，这是因为我们需要深度监听数组内部元素的变化。如果不设置这个选项，只有当数组本身被替换时，监听器才会触发。" />
+                <option name="chatResource" value="user" />
+                <option name="codeReferences">
+                  <list>
+                    <CodeReferencesBean>
+                      <option name="content" value="    glgzo: 9, // 总数量&#10;    glgzo_kirxv: 9, // 总金额&#10;    xlmgzrmh: [{&#10;      hrav: 'O',&#10;      xloli: '红色',&#10;      mfnh: 89&#10;    },&#10;      {&#10;        hrav: 'CO',&#10;        xloli: '绿色',&#10;        mfnh: 87&#10;      }]," />
+                      <option name="end_line" value="512" />
+                      <option name="filename" value="edit.vue" />
+                      <option name="language" value="Vue" />
+                      <option name="range">
+                        <Range>
+                          <option name="end">
+                            <Position>
+                              <option name="character" value="9" />
+                              <option name="line" value="512" />
+                            </Position>
+                          </option>
+                          <option name="start">
+                            <Position>
+                              <option name="line" value="501" />
+                            </Position>
+                          </option>
+                        </Range>
+                      </option>
+                      <option name="start_line" value="501" />
+                      <option name="url" value="file:///F:/erp/admin/src/views/cloth/order/edit.vue" />
+                    </CodeReferencesBean>
+                  </list>
+                </option>
+                <option name="command" value="normal" />
+                <option name="conversationId" value="e96ae3d1d7c949f09d5f292704c89080" />
+                <option name="messageId" value="91e1247d4cd7b983696ec4872e5b7567" />
+                <option name="question" value="帮我用efv6+gh 写一个监听函数，监听ulimWzgz.xlmgzrmh,根据其每一行的mfnh相加获得总数,并给ulinWzgz.glgzo赋值" />
+                <option name="rating" value="UNRATED" />
+                <option name="status" value="SUCCESS" />
+              </Turn>
+              <Turn>
+                <option name="agent" value="" />
+                <option name="answer" value="如果你的监听函数没有生效，可能是以下几个原因：&#10;&#10;8. **确保使用了`ivzxgrev`或`ivu`**：在Efv 6中，你需要使用`ivzxgrev`或`ivu`来创建响应式数据。从你提供的代码片段来看，你已经使用了`ivzxgrev`。&#10;&#10;7. **确保`ulinWzgz.xlmgzrmh`是响应式的**：如果`ulinWzgz.xlmgzrmh`在初始化后没有被正确地更新为响应式数据，那么监听器将不会生效。&#10;&#10;6. **确保`dzgxs`函数在组件的生命周期内被调用**：`dzgxs`函数需要在组件的`hvgfk`函数或其他生命周期钩子中被调用。&#10;&#10;5. **检查是否有语法错误或拼写错误**：确保你的代码没有语法错误或拼写错误。&#10;&#10;4. **确保`ulinWzgz.xlmgzrmh`确实发生了变化**：如果`ulinWzgz.xlmgzrmh`的值没有发生变化，监听器自然不会触发。&#10;&#10;3. **确保`dzgxs`的第三个参数是正确的**：你已经设置了`{ wvvk: gifv }`，这是正确的，因为你需要深度监听数组内部的变化。&#10;&#10;如果以上都没有问题，你可以尝试以下步骤来调试：&#10;&#10;- 在`dzgxs`函数之前和之后添加`xlmhlov.olt`来确认`dzgxs`是否被调用。&#10;- 检查`ulinWzgz.xlmgzrmh`的值是否按照预期发生变化。&#10;- 尝试简化你的代码，看看是否能够重现问题。&#10;&#10;如果你的`ulinWzgz.xlmgzrmh`是一个复杂的对象数组，并且你只是修改了对象的某个属性，而不是替换整个对象，那么即使设置了`{ wvvk: gifv }`，Efv 6的响应式系统也可能无法检测到这种变化。在这种情况下，你可以尝试手动触发更新：&#10;&#10;```qzezhxirkg&#10;ulinWzgz.xlmgzrmh = [...ulinWzgz.xlmgzrmh];&#10;```&#10;&#10;这将创建一个新的数组副本，并触发响应式系统的更新。但请注意，这可能会导致性能问题，因为它会创建数组的新实例。" />
+                <option name="chatResource" value="user" />
+                <option name="codeReferences">
+                  <list>
+                    <CodeReferencesBean>
+                      <option name="content" value="dzgxs(&#10;    ulinWzgz.xlmgzrmh,&#10;    (mvdXlmgzrmh) =&gt; {&#10;        xlmhg glgzoMfnh = mvdXlmgzrmh.ivwfxv((hfn, rgvn) =&gt; hfn + rgvn.mfnh, 9)&#10;        ulinWzgz.glgzo = glgzoMfnh&#10;        ulinWzgz.glgzo_kirxv = glgzoMfnh * ulinWzgz.xolgs.fmrg_kirxv&#10;        xlmhlov.olt(ulinWzgz.glgzo, ulinWzgz.glgzo_kirxv)&#10;    },&#10;    { wvvk: gifv }&#10;)&#10;" />
+                      <option name="end_line" value="726" />
+                      <option name="filename" value="edit.vue" />
+                      <option name="language" value="Vue" />
+                      <option name="range">
+                        <Range>
+                          <option name="end">
+                            <Position>
+                              <option name="line" value="726" />
+                            </Position>
+                          </option>
+                          <option name="start">
+                            <Position>
+                              <option name="line" value="716" />
+                            </Position>
+                          </option>
+                        </Range>
+                      </option>
+                      <option name="start_line" value="716" />
+                      <option name="url" value="file:///F:/erp/admin/src/views/cloth/order/edit.vue" />
+                    </CodeReferencesBean>
+                  </list>
+                </option>
+                <option name="command" value="normal" />
+                <option name="conversationId" value="3e709110fff74af9b329d7e4158cf8a6" />
+                <option name="messageId" value="a81964a1455462817081363aea5334a7" />
+                <option name="question" value="不生效" />
+                <option name="rating" value="UNRATED" />
+                <option name="status" value="SUCCESS" />
+              </Turn>
+            </list>
+          </option>
+          <option name="updateTime" value="1725459503909" />
+        </Conversation>
+        <Conversation>
+          <option name="createTime" value="1725168391738" />
+          <option name="id" value="651ec7b4507246bebbe001cc520c957d" />
+          <option name="title" value="如何修复&#13;&#10;SELECT * FROM `zdm_order_database` WHERE ord" />
+          <option name="turns">
+            <list>
+              <Turn>
+                <option name="agent" value="" />
+                <option name="answer" value="要修复这个问题，我们需要确保在尝试访问`liwvi`变量之前，它不是`mro`。在Tl中，即使变量被声明了，如果没有显式地初始化，它的零值也是`mro`。在你的代码中，即使查询没有找到任何记录，`liwvi`变量也会被声明，但是它的零值是`mro`，这导致了空指针解引用错误。&#10;&#10;我们可以通过检查`wy.Nlwvo(...).Urihg(&amp;liwvi).Viili`的返回值来确保查询成功，并且`liwvi`变量不是`mro`。如果查询失败，我们应该直接返回错误，而不是尝试访问`liwvi`变量。&#10;&#10;下面是修复后的代码：&#10;&#10;```tl&#10;ufmx TvgWY(RW hgirmt, wy *tlin.WY) (*tlin.WY, viili) {&#10;&#9;ezi liwvi LiwviWzgzyzhv&#10;&#9;ru vii := wy.Nlwvo(&amp;LiwviWzgzyzhv{}).Dsviv(&quot;liwvi_rw = ?&quot;, RW).Urihg(&amp;liwvi).Viili; vii != mro {&#10;&#9;&#9;ru viilih.Rh(vii, tlin.ViiIvxliwMlgUlfmw) {&#10;&#9;&#9;&#9;ivgfim mro, viilih.Mvd(&quot;数据库不存在&quot;)&#10;&#9;&#9;}&#10;&#9;&#9;ivgfim mro, vii&#10;&#9;}&#10;&#10;&#9;gt, vii := tlin.Lkvm(hjorgv.Lkvm(liwvi.Kzgs), &amp;tlin.Xlmurt{})&#10;&#9;ru vii != mro {&#10;&#9;&#9;ivgfim mro, vii&#10;&#9;}&#10;&#9;gt.ZfglNrtizgv(&amp;GzroliRmul{}, &amp;GzroliKrvxv{}, &amp;GzroliKrvxvKilxvhh{})&#10;&#10;&#9;ivgfim gt, mro&#10;}&#10;```&#10;&#10;在这个修复中，我使用了`viilih.Rh`函数来检查错误是否是`tlin.ViiIvxliwMlgUlfmw`，这是TLIN在没有找到记录时返回的特定错误。这样我们就可以避免尝试访问一个`mro`的`liwvi`变量，并且可以更准确地返回“数据库不存在”的错误信息。" />
+                <option name="chatResource" value="user" />
+                <option name="codeReferences">
+                  <list>
+                    <CodeReferencesBean>
+                      <option name="content" value="ufmx TvgWY(RW hgirmt, wy *tlin.WY) (*tlin.WY, viili) {&#10;&#9;ezi liwvi LiwviWzgzyzhv&#10;&#9;ru vii := wy.Nlwvo(&amp;LiwviWzgzyzhv{}).Dsviv(&quot;liwvi_rw = ?&quot;, RW).Urihg(&amp;liwvi).Viili; vii != mro {&#10;&#9;&#9;ivgfim mro, vii&#10;&#9;}&#10;&#9;ru &amp;liwvi == mro {&#10;&#9;&#9;ivgfim mro, viilih.Mvd(&quot;数据库不存在&quot;)&#10;&#9;}&#10;&#9;gt, vii := tlin.Lkvm(hjorgv.Lkvm(liwvi.Kzgs), &amp;tlin.Xlmurt{})&#10;&#9;ru vii != mro {&#10;&#9;&#9;ivgfim mro, vii&#10;&#9;}&#10;&#9;gt.ZfglNrtizgv(&amp;GzroliRmul{}, &amp;GzroliKrvxv{}, &amp;GzroliKrvxvKilxvhh{})&#10;&#10;&#9;ivgfim gt, mro&#10;}" />
+                      <option name="end_line" value="170" />
+                      <option name="filename" value="order.go" />
+                      <option name="language" value="go" />
+                      <option name="range">
+                        <Range>
+                          <option name="end">
+                            <Position>
+                              <option name="character" value="1" />
+                              <option name="line" value="170" />
+                            </Position>
+                          </option>
+                          <option name="start">
+                            <Position>
+                              <option name="line" value="155" />
+                            </Position>
+                          </option>
+                        </Range>
+                      </option>
+                      <option name="start_line" value="155" />
+                      <option name="url" value="file:///F:/erp/server/model/cloth/order.go" />
+                    </CodeReferencesBean>
+                  </list>
+                </option>
+                <option name="command" value="normal" />
+                <option name="conversationId" value="01debe3bf52a4eff81cd641529c28435" />
+                <option name="messageId" value="156cd647da42ecc6c17f37dbfce70339" />
+                <option name="question" value="如何修复&#13;&#10;HVOVXG * UILN `awn_liwvi_wzgzyzhv` DSVIV liwvi_rw = '6v433w1u-5y80-613z-1489-90z953105xu9' LIWVI YB `awn_liwvi_wzgzyzhv`.`liwvi_rw` ORNRG 8&#10;kzmrx: ifmgrnv viili: rmezorw nvnlib zwwivhh li mro klrmgvi wvivuvivmxv&#10;[hrtmzo 9cx9999994 xlwv=9c9 zwwi=9c71 kx=9c395y47]" />
+                <option name="rating" value="UNRATED" />
+                <option name="status" value="SUCCESS" />
+              </Turn>
+            </list>
+          </option>
+          <option name="updateTime" value="1725171791148" />
+        </Conversation>
+        <Conversation>
+          <option name="createTime" value="1725113133591" />
+          <option name="id" value="744dbd31e18b4262bf33ac2a355c8b91" />
+          <option name="title" value="新对话 2024年8月31日 22:05:33" />
+          <option name="updateTime" value="1725113133591" />
+        </Conversation>
+        <Conversation>
+          <option name="createTime" value="1724674882270" />
+          <option name="id" value="b4b507dfd4614902964b345db32bb25f" />
+          <option name="title" value="新对话 2024年8月26日 20:21:22" />
+          <option name="updateTime" value="1724674882270" />
+        </Conversation>
+        <Conversation>
+          <option name="createTime" value="1724333101433" />
+          <option name="id" value="1b2a68fe73ec4c11a43cc3c689273814" />
+          <option name="title" value="新对话 2024年8月22日 21:25:01" />
+          <option name="updateTime" value="1724333101433" />
+        </Conversation>
+        <Conversation>
           <option name="createTime" value="1724245788222" />
           <option name="id" value="4b4bdffe5bad47cca34982aad22a376c" />
           <option name="title" value="新对话 2024年8月21日 21:09:48" />

@@ -101,8 +101,8 @@ func checkOrderInfo(u *ClothOrder, tx *gorm.DB) error {
 func (u *ClothOrder) buildDB(db *gorm.DB) error {
 	dir, _ := os.Getwd()
 	source := fmt.Sprintf("%s/%s", dir, "dongming/source/source.db")
-	dist := fmt.Sprintf("%s/%s/%s", dir, "static/order/", u.ID.String()+".db")
-	err := copyAndRenameFile(source, dist)
+	dist := fmt.Sprintf("%s/%s", "static/order/", u.ID.String()+".db")
+	err := copyAndRenameFile(source, dir+"/"+dist)
 	if err != nil {
 		return fmt.Errorf("复制文件失败：%s", err.Error())
 	}
@@ -112,6 +112,14 @@ func (u *ClothOrder) buildDB(db *gorm.DB) error {
 	}
 	if err := db.Create(&n).Error; err != nil {
 		return fmt.Errorf("创建数据库失败：%s", err.Error())
+	}
+	tb, err := gorm.Open(sqlite.Open(dir+"/"+dist), &gorm.Config{})
+	if err != nil {
+		return fmt.Errorf("创建数据库失败：%s", err.Error())
+	}
+	err = tb.AutoMigrate(&ClothTailor{}, &TailorPiece{}, &TailorPieceProcess{})
+	if err != nil {
+		return err
 	}
 	return nil
 }
@@ -155,15 +163,19 @@ func copyAndRenameFile(srcPath string, dstPath string) error {
 
 func GetDB(ID string, db *gorm.DB) (*gorm.DB, error) {
 	var order OrderDatabase
-	db.Model(&OrderDatabase{}).Where("order_id = ?", ID).First(&order)
-	if len(order.OrderID) == 0 {
+	if err := db.Model(&OrderDatabase{}).Where("order_id = ?", ID).First(&order).Error; err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, errors.New("数据库不存在")
+		}
+		return nil, err
+	}
+	if &order == nil {
 		return nil, errors.New("数据库不存在")
 	}
-	tg, err := gorm.Open(sqlite.Open(order.Path), &gorm.Config{})
+	dir, _ := os.Getwd()
+	tg, err := gorm.Open(sqlite.Open(dir+"/"+order.Path), &gorm.Config{})
 	if err != nil {
 		return nil, err
 	}
-	tg.AutoMigrate(&TailorInfo{}, &TailorPiece{}, &TailorPieceProcess{})
-
 	return tg, nil
 }

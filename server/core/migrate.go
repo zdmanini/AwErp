@@ -48,5 +48,6 @@ func dst() []interface{} {
 		// cloth
 		&cloth.ClothStyle{},
 		&cloth.ClothOrder{},
+		&cloth.OrderDatabase{},
 	}
 }

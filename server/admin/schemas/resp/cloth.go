@@ -64,7 +64,18 @@ type ClothOrderResp struct {
 	Consumption  []Consumption  `json:"consumption" structs:"consumption"`
 	Crafts       []Craft        `json:"crafts" structs:"crafts"`
 	Status       uint8          `json:"status" structs:"status"`
-	Remark       string         `json:"remark"	 structs:"remark"`
+	// 进度
+	Progress   ClothOrderProgress `json:"progress" structs:"progress"`
+	Remark     string             `json:"remark"	 structs:"remark"`
+	CreateTime core.TsTime        `json:"create_time" structs:"create_time"`
+	UpdateTime core.TsTime        `json:"update_time" structs:"update_time"`
+}
+
+type ClothOrderProgress struct {
+	Total   int64   `json:"total" structs:"total"`
+	Done    int64   `json:"done" structs:"done"`
+	Percent float64 `json:"percent" structs:"percent"`
+	Cuted   int64   `json:"cuted" structs:"cuted"`
 }
 
 type OrderStyle struct {
@@ -87,4 +98,28 @@ type OrderContain struct {
 	Size  string `json:"size" structs:"size"`
 	Color string `json:"color" structs:"color"`
 	Nums  uint   `json:"nums" structs:"nums"`
+}
+
+type ClothTailor struct {
+	OrderNo string `json:"order_no"`
+	OrderId uint   `json:"order_id"`
+	Order   struct {
+		Name    string `json:"name"`
+		Code    string `json:"code"`
+		Picture string `json:"picture"`
+	} `json:"order,omitempty"`
+	ClothNo  string `json:"cloth_no"`
+	Customer string `json:"customer"`
+	Info     struct {
+	} `json:"info"`
+	Piece      []TailorPiece `json:"piece,omitempty"`
+	CreateTime core.TsTime   `json:"create_time" structs:"create_time"`
+	UpdateTime core.TsTime   `json:"update_time" structs:"update_time"`
+}
+
+type TailorPiece struct {
+	Size  string  `json:"size"`
+	Color string  `json:"color"`
+	Nums  uint    `json:"nums"`
+	Price float64 `json:"price"`
 }

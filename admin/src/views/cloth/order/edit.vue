@@ -30,13 +30,9 @@
                         <el-form-item label="合同编号" prop="code">
                             <el-input v-model="formData.code" clearable style="width: 360px">
                                 <template #append>
-                                    <el-button
-                                        type="primary"
-                                        @click="methods.generateCode"
-                                        circle
-                                        >
-                                      <icon name="el-icon-refresh" />
-                                      自动生成</el-button
+                                    <el-button type="primary" @click="methods.generateCode" circle>
+                                        <icon name="el-icon-refresh" />
+                                        自动生成</el-button
                                     >
                                 </template>
                             </el-input>
@@ -60,11 +56,11 @@
                         </el-form-item>
                         <el-form-item label="交货日期" prop="delivery_date">
                             <el-date-picker
-                                v-model="formData.delivery_date"
+                                v-model.number="formData.delivery_date"
                                 type="date"
                                 placeholder="选择日期"
                                 style="width: 360px"
-                                value-format="x"
+                                value-format="X"
                             >
                             </el-date-picker>
                         </el-form-item>
@@ -192,9 +188,9 @@
                                 style="width: 360px"
                             ></el-input>
                         </el-form-item>
-                        <el-form-item label="单价" prop="cloth.unit_price">
+                        <el-form-item label="单价" prop="cloth.unitPrice">
                             <el-input-number
-                                v-model="formData.cloth.unit_price"
+                                v-model="formData.cloth.unitPrice"
                                 clearable
                                 controls-position="right"
                                 :precision="2"
@@ -254,12 +250,13 @@
                                             }}
                                         </td>
                                         <td>
-                                            {{
-                                                formData.contains.reduce(
-                                                    (total, item) => total + item.nums,
-                                                    0
-                                                )
-                                            }}
+                                            <!--                                            {{-->
+                                            <!--                                                formData.contains.reduce(-->
+                                            <!--                                                    (total, item) => total + item.nums,-->
+                                            <!--                                                    0-->
+                                            <!--                                                )-->
+                                            <!--                                            }}-->
+                                            {{ formData.total }}
                                         </td>
                                     </tr>
                                 </tfoot>
@@ -342,8 +339,18 @@
                         label-position="top"
                     >
                         <el-form-item label="物料" prop="consumption">
-                            <table>
+                            <table class="consumption">
                                 <thead>
+                                    <th>
+                                        <el-button
+                                            type="primary"
+                                            plain
+                                            circle
+                                            @click="methods.addConsumptionBtn"
+                                        >
+                                            <icon name="el-icon-plus" />
+                                        </el-button>
+                                    </th>
                                     <th>部位</th>
                                     <th>物料名称</th>
                                     <th>单价/单位</th>
@@ -360,40 +367,61 @@
                                 </thead>
                                 <tbody>
                                     <tr v-for="(item, index) in formData.consumption" :key="index">
+                                        <td>{{ index + 1 }}</td>
                                         <td>
-                                            <el-input
-                                                v-model="item.part"
+                                            <!--                                            <el-input-->
+                                            <!--                                                v-model="item.part"-->
+                                            <!--                                                placeholder="请输入部位"-->
+                                            <!--                                                clearable-->
+                                            <!--                                            ></el-input>-->
+                                            <input
+                                                v-model.trim="item.part"
                                                 placeholder="请输入部位"
-                                                clearable
-                                            ></el-input>
+                                                style="width: 80px"
+                                            />
                                         </td>
                                         <td>
-                                            <el-input
-                                                v-model="item.name"
-                                                placeholder="请输入物料名称"
-                                                clearable
-                                            ></el-input>
+                                            <!--                                            <el-input-->
+                                            <!--                                                v-model="item.name"-->
+                                            <!--                                                placeholder="请输入物料名称"-->
+                                            <!--                                                clearable-->
+                                            <!--                                            ></el-input>-->
+                                            <input
+                                                v-model.trim="item.name"
+                                                placeholder="物料名称"
+                                                style="width: 80px"
+                                            />
                                         </td>
                                         <td>
-                                            <el-input-number
-                                                v-model="item.unit_price"
+                                            <!--                                            <el-input-number-->
+                                            <!--                                                v-model="item.unitPrice"-->
+                                            <!--                                                placeholder="请输入单价"-->
+                                            <!--                                                clearable-->
+                                            <!--                                                :precision="2"-->
+                                            <!--                                            ></el-input-number>-->
+                                            <input
+                                                v-model.m.number="item.unitPrice"
                                                 placeholder="请输入单价"
-                                                clearable
-                                                :precision="2"
-                                            ></el-input-number>
+                                                style="width: 80px"
+                                            />
                                         </td>
                                         <td>
-                                            <el-input-number
-                                                v-model="item.nums"
+                                            <!--                                            <el-input-number-->
+                                            <!--                                                v-model="item.nums"-->
+                                            <!--                                                placeholder="请输入单件用量"-->
+                                            <!--                                                clearable-->
+                                            <!--                                                :precision="2"-->
+                                            <!--                                            ></el-input-number>-->
+                                            <input
+                                                v-model.m.number="item.nums"
                                                 placeholder="请输入单件用量"
-                                                clearable
-                                                :precision="2"
-                                            ></el-input-number>
+                                                style="width: 80px"
+                                            />
                                         </td>
                                         <td>
                                             <el-switch
-                                                @change="allColor(item, index)"
-                                                v-model="allColors[index]"
+                                                @change="methods.allColor(item, index)"
+                                                v-model="state.allColors[index]"
                                             ></el-switch>
                                         </td>
                                         <td v-for="color in formData.cloth.colors" :key="color">
@@ -401,8 +429,8 @@
                                         </td>
                                         <td>
                                             <el-switch
-                                                @change="allSize(item, index)"
-                                                v-model="allSizes[index]"
+                                                @change="methods.allSize(item, index)"
+                                                v-model="state.allSizes[index]"
                                             ></el-switch>
                                         </td>
 
@@ -413,36 +441,22 @@
                                             <el-button
                                                 type="danger"
                                                 plain
-                                                icon="el-icon-delete"
                                                 @click="formData.consumption.splice(index, 1)"
-                                            ></el-button>
+                                            >
+                                                <icon name="el-icon-delete" />
+                                            </el-button>
                                         </td>
                                     </tr>
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="11">
-                                            <el-button
-                                                type="primary"
-                                                plain
-                                                icon="el-icon-plus"
-                                                @click="
-                                                    formData.consumption.push(
-                                                        JSON.parse(JSON.stringify(addConsumption))
-                                                    )
-                                                "
-                                                >添加</el-button
-                                            >
-                                        </td>
-                                    </tr>
-                                </tfoot>
                             </table>
                         </el-form-item>
                     </el-form>
                     <div v-if="state.active == 4">
                         <el-result icon="success" title="操作成功" sub-title="您的操作已完成！">
                             <template #extra>
-                                <el-button type="primary" @click="methods.again">再来一单</el-button>
+                                <el-button type="primary" @click="methods.again"
+                                    >再来一单</el-button
+                                >
                                 <el-button @click="$router.go(-1)">返回列表</el-button>
                             </template>
                         </el-result>
@@ -451,6 +465,7 @@
             </el-row>
         </el-card>
         <footer-btns>
+<!--            <input v-model="state.active" />-->
             <el-button
                 v-if="state.active > 0 && state.active < 4"
                 @click="methods.pre"
@@ -497,11 +512,22 @@ const formData = reactive({
         sizes: [], // 尺码
         year: '', // 年份
         season: '', // 季节
-        unit_price: 0 // 单价
+        unitPrice: 0 // 单价
     },
     total: 0, // 总数量
     total_price: 0, // 总金额
-    contains: [],
+    contains: [
+        {
+            size: 'L',
+            color: '红色',
+            nums: 10
+        },
+        {
+            size: 'XL',
+            color: '绿色',
+            nums: 12
+        }
+    ],
     consumption: [], // 消耗
     // 工序
     procedure: []
@@ -535,7 +561,7 @@ const state = reactive({
         part: '',
         unit: '',
         nums: 0,
-        unit_price: 0
+        unitPrice: 0
     },
     contains: [],
     consumption: [],
@@ -545,24 +571,24 @@ const state = reactive({
 const { removeTab } = useMultipleTabs()
 const formRef = shallowRef<FormInstance>()
 const rules = reactive({
-  name: [{ required: true, message: '请输入合同名称', trigger: 'blur' }],
-  code: [{ required: true, message: '请输入合同编号', trigger: 'blur' }],
-  customer: [{ required: true, message: '请输入客户名称', trigger: 'blur' }],
-  delivery_date: [{ required: true, message: '请选择交货日期', trigger: 'blur' }],
-  order_type: [{ required: true, message: '请选择订单类型', trigger: 'blur' }],
-  salesman: [{ required: true, message: '请选择业务员', trigger: 'blur' }],
-  remark: [],
-  // 款式
-  'cloth.name': [{ required: true, message: '请输入款名', trigger: 'blur' }],
-  'cloth.code': [{ required: true, message: '请输入款号', trigger: 'blur' }],
-  'cloth.picture': [],
-  'cloth.colors': [{ required: true, message: '请选择颜色', trigger: 'blur' }],
-  'cloth.sizes': [{ required: true, message: '请选择尺码', trigger: 'blur' }],
-  'cloth.year': [{ required: true, message: '请输入年份', trigger: 'blur' }],
-  'cloth.season': [{ required: true, message: '请输入季节', trigger: 'blur' }],
-  'cloth.unit_price': [{ required: true, message: '请输入单价', trigger: 'blur' }],
-  // 工序
-  procedure: [{ required: true, message: '请添加工序', trigger: 'blur' }]
+    name: [{ required: true, message: '请输入合同名称', trigger: 'blur' }],
+    code: [{ required: true, message: '请输入合同编号', trigger: 'blur' }],
+    customer: [{ required: true, message: '请输入客户名称', trigger: 'blur' }],
+    delivery_date: [{ required: true, message: '请选择交货日期', trigger: 'blur' }],
+    order_type: [{ required: true, message: '请选择订单类型', trigger: 'blur' }],
+    salesman: [{ required: true, message: '请选择业务员', trigger: 'blur' }],
+    remark: [],
+    // 款式
+    'cloth.name': [{ required: true, message: '请输入款名', trigger: 'blur' }],
+    'cloth.code': [{ required: true, message: '请输入款号', trigger: 'blur' }],
+    'cloth.picture': [],
+    'cloth.colors': [{ required: true, message: '请选择颜色', trigger: 'blur' }],
+    'cloth.sizes': [{ required: true, message: '请选择尺码', trigger: 'blur' }],
+    'cloth.year': [{ required: true, message: '请输入年份', trigger: 'blur' }],
+    'cloth.season': [{ required: true, message: '请输入季节', trigger: 'blur' }],
+    'cloth.unitPrice': [{ required: true, message: '请输入单价', trigger: 'blur' }],
+    // 工序
+    procedure: [{ required: true, message: '请添加工序', trigger: 'blur' }]
 })
 
 const methods = {
@@ -697,33 +723,24 @@ watch(
         let total_price = 0
         val.forEach((item) => {
             total += item.nums
-            total_price += item.nums * formData.cloth.unit_price
+            total_price += item.nums * formData.cloth.unitPrice
         })
         formData.total = total
         formData.total_price = total_price
-    }
+    },
+    { deep: true }
 )
 
 watch(
-    () => formData.cloth.unit_price,
+    () => formData.cloth.unitPrice,
     (val, oldVal) => {
         let total_price = 0
         formData.contains.forEach((item) => {
             total_price += item.nums * val
         })
         formData.total_price = total_price
-    }
-)
-
-watch(
-    () => formData.total,
-    (val, oldVal) => {
-        let total_price = 0
-        formData.contains.forEach((item) => {
-            total_price += item.nums * formData.cloth.unit_price
-        })
-        formData.total_price = total_price
     },
+    { deep: true }
 )
 
 watch(
@@ -826,5 +843,36 @@ table.crafts td {
 }
 table.crafts tbody tr:nth-child(2n) {
     background-color: #f5f5f5;
+}
+table.consumption {
+    width: 100%;
+    max-width: 1200px;
+    overflow-x: auto;
+    border-collapse: collapse;
+}
+table.consumption th {
+    border-bottom: 1px solid #ddd;
+    padding: 5px 10px;
+    background-color: #f5f5f5;
+}
+table.consumption td {
+    min-width: 80px;
+    border-bottom: 1px solid #ddd;
+    padding: 2px 5px;
+    text-align: center;
+}
+table.consumption tbody tr:nth-child(2n) {
+    background-color: #f5f5f5;
+}
+
+table.consumption input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    text-align: center;
+    background-color: transparent;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
 }
 </style>
